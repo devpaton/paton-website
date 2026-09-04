@@ -1,6 +1,6 @@
 ---
 layout: layouts/page.njk
-permalink: /cookie-policy/index.html
+permalink: /en/cookie-policy/index.html
 title: Cookie policy
 eyebrow: Legal
 lede: There is no cookie banner on this site because there is nothing to consent to.
@@ -21,7 +21,7 @@ That is why you were not shown a consent banner. A banner would be asking you to
 ## No analytics and no tracking
 
 There is no analytics service, no tag manager, no advertising or remarketing pixel, and no embedded
-social media widget anywhere on this site. The [savings calculator](/savings-calculator/) runs
+social media widget anywhere on this site. The [savings calculator](/en/savings-calculator/) runs
 entirely in your browser and transmits nothing.
 
 Earlier versions of paton.ch ran on WordPress with Google Analytics, social embeds and a
@@ -34,14 +34,14 @@ clearing your browser's site data for paton.ch removes them.
 One request does leave your browser: the [Manrope](https://fonts.google.com/specimen/Manrope)
 typeface is loaded from Google Fonts. Google does not set a cookie for that request, but the request
 itself exposes your IP address to Google. This is explained in the
-[privacy policy](/privacy-policy/), and a content blocker will prevent it if you prefer.
+[privacy policy](/en/privacy-policy/), and a content blocker will prevent it if you prefer.
 
 ## If that ever changes
 
 If we later add anything that stores data on your device or tracks you across pages, we will put it
 behind a genuine consent choice — one where rejecting is as easy as accepting, and where nothing
 non-essential runs until you accept — and we will update this page and the
-[privacy policy](/privacy-policy/) before it goes live.
+[privacy policy](/en/privacy-policy/) before it goes live.
 
 Questions: [info@paton.ch](mailto:info@paton.ch).
 

@@ -1,29 +1,27 @@
+// Language-neutral facts about the company. Everything that has words in it — navigation,
+// footer headings, button labels — lives in src/_data/ui.js, keyed by language.
 module.exports = {
   name: "PATON",
   tagline: "Patients to nurses.",
-  description:
-    "PATON builds a smart nurse-call system that tells the ward what a patient actually needs, " +
-    "so the right person goes to the right room with the right thing in hand.",
+  // Meta description fallback, per language.
+  description: {
+    de:
+      "PATON baut ein intelligentes Schwesternrufsystem, das der Station sagt, was eine " +
+      "Patientin oder ein Patient tatsächlich braucht — damit die richtige Person mit dem " +
+      "Richtigen in der Hand ins richtige Zimmer geht.",
+    en:
+      "PATON builds a smart nurse-call system that tells the ward what a patient actually needs, " +
+      "so the right person goes to the right room with the right thing in hand.",
+  },
   url: "https://paton.ch",
-  locale: "en",
+  languages: ["de", "en"],
+  defaultLanguage: "de",
   email: "info@paton.ch",
-  city: "Zurich",
-  country: "Switzerland",
+  city: { de: "Zürich", en: "Zurich" },
+  country: { de: "Schweiz", en: "Switzerland" },
   founded: 2021,
   social: {
     linkedin: "https://www.linkedin.com/company/paton",
     twitter: "https://twitter.com/PatonSwiss",
   },
-  nav: [
-    { text: "Problem", url: "/challenge/" },
-    { text: "Solution", url: "/solution/" },
-    { text: "Case study", url: "/case-study/" },
-    { text: "Savings calculator", url: "/savings-calculator/" },
-    { text: "About", url: "/about/" },
-  ],
-  legalNav: [
-    { text: "Legal notice", url: "/legalnotice/" },
-    { text: "Privacy policy", url: "/privacy-policy/" },
-    { text: "Cookie policy", url: "/cookie-policy/" },
-  ],
 };

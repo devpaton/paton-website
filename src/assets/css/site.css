@@ -406,6 +406,38 @@ hr {
   color: var(--maroon);
 }
 
+/* Language switcher. Both languages stay visible so the reader can see the site has the
+   other one, and the current language is marked rather than hidden. */
+.lang-switch {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  margin: 0;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.lang-switch__link {
+  color: var(--ink-2);
+  text-decoration: none;
+  padding: 0.15rem 0.1rem;
+}
+
+.lang-switch__link:hover {
+  color: var(--maroon);
+}
+
+.lang-switch__link[aria-current="true"] {
+  color: var(--maroon);
+  text-decoration: underline;
+  text-underline-offset: 0.3em;
+}
+
+.lang-switch__sep {
+  color: var(--line-strong);
+}
+
 .site-header__toggle {
   display: none;
   width: 2.75rem;
@@ -479,6 +511,11 @@ hr {
     display: block;
     padding: 0.85rem 0.25rem;
     border-bottom: 1px solid var(--line);
+    font-size: 1rem;
+  }
+
+  .lang-switch {
+    padding: 0.85rem 0.25rem 0;
     font-size: 1rem;
   }
 

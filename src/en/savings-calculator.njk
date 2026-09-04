@@ -1,6 +1,6 @@
 ---
 layout: layouts/base.njk
-permalink: /savings-calculator/index.html
+permalink: /en/savings-calculator/index.html
 title: Savings calculator
 pageScript: /assets/js/calculator.js
 description: >-
@@ -51,7 +51,7 @@ description: >-
 </section>
 
 <section class="section section--tight">
-  <div class="shell" id="calculator">
+  <div class="shell" id="calculator" data-lang="{{ lang }}">
     <script type="application/json" id="calculator-config">{{ calculator | dump | safe }}</script>
 
     <div class="calc">
@@ -65,7 +65,7 @@ description: >-
               class="calc__preset"
               data-preset-beds="{{ preset.beds }}"
               aria-pressed="false"
-            >{{ preset.label }} · {{ preset.beds }} beds</button>
+            >{{ preset.label[lang] }} · {{ preset.beds }} beds</button>
           {% endfor %}
         </div>
 

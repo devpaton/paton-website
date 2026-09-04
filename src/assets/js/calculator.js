@@ -17,6 +17,78 @@
   var config = JSON.parse(document.getElementById("calculator-config").textContent);
   var DAYS_PER_YEAR = 365;
 
+  // Only the handful of strings this script writes into the page. Everything else on the
+  // page is already translated by the template it came from. The page names its own
+  // language on #calculator, so this stays a lookup rather than an i18n runtime.
+  var STRINGS = {
+    de: {
+      hours: " h",
+      minutes: " Minuten",
+      minShort: " Min.",
+      perFranc: "× der Richtkosten",
+      needEmail: "Bitte zuerst eine E-Mail-Adresse eingeben.",
+      mailOpened:
+        "Ihr E-Mail-Programm sollte sich mit der Zusammenfassung öffnen. An uns wurde nichts gesendet.",
+      subject: "PATON — Richtwert zur Zeitersparnis",
+      summary: {
+        title: "PATON — Richtwert zur Zeitersparnis",
+        inputs: "Ihre Angaben",
+        beds: "  Betten: ",
+        occupancy: "  Auslastung: ",
+        calls: "  Rufe pro Patiententag: ",
+        wasted: "  Zeitverlust pro Ruf: ",
+        wastedUnit: " Minuten",
+        cost: "  Pflegekosten pro Stunde: CHF ",
+        patonCost: "  Richtwert PATON-Kosten pro Bett und Jahr: CHF ",
+        result: "Modelliertes Ergebnis pro Jahr",
+        resultCalls: "  Schwesternrufe: ",
+        resultHours: "  Aktuell verlorene Pflegezeit: ",
+        resultHoursUnit: " Stunden",
+        resultValue: "  Wert dieser Zeit: CHF ",
+        resultPatonCost: "  Richtwert PATON-Kosten: CHF ",
+        resultNet: "  Netto-Nutzen: CHF ",
+        // Never an FTE or headcount figure — see the rule above.
+        resultReturned: "  Zurückgegebene Zeit pro Bett und Tag: ",
+        footer: "Dies ist ein Modell, keine Offerte. Annahmen und Formel: ",
+        path: "/savings-calculator/",
+      },
+    },
+    en: {
+      hours: " h",
+      minutes: " minutes",
+      minShort: " min",
+      perFranc: "× the indicative cost",
+      needEmail: "Add an email address first.",
+      mailOpened: "Your email app should open with the summary. Nothing was sent to us.",
+      subject: "PATON — indicative savings estimate",
+      summary: {
+        title: "PATON — indicative savings estimate",
+        inputs: "Your inputs",
+        beds: "  Beds: ",
+        occupancy: "  Occupancy: ",
+        calls: "  Calls per patient-day: ",
+        wasted: "  Time lost per call: ",
+        wastedUnit: " minutes",
+        cost: "  Nursing cost per hour: CHF ",
+        patonCost: "  Indicative PATON cost per bed per year: CHF ",
+        result: "Modelled result per year",
+        resultCalls: "  Nurse calls: ",
+        resultHours: "  Nursing time currently lost: ",
+        resultHoursUnit: " hours",
+        resultValue: "  Value of that time: CHF ",
+        resultPatonCost: "  Indicative PATON cost: CHF ",
+        resultNet: "  Net benefit: CHF ",
+        // Never an FTE or headcount figure — see the rule above.
+        resultReturned: "  Time handed back per bed per day: ",
+        footer: "This is a model, not a quote. Assumptions and formula: ",
+        path: "/en/savings-calculator/",
+      },
+    },
+  };
+
+  var text = STRINGS[root.getAttribute("data-lang")] || STRINGS.de;
+
+  // Swiss number formatting in both languages: 532'182, never 532,182 or 532.182.
   var chf = new Intl.NumberFormat("de-CH", {
     maximumFractionDigits: 0,
   });
@@ -83,7 +155,7 @@
     var result = model(input);
 
     set("annualSaving", "CHF " + chf.format(result.annualSaving));
-    set("hoursLost", chf.format(result.hoursLost) + " h");
+    set("hoursLost", chf.format(result.hoursLost) + text.hours);
     set("calls", chf.format(result.calls));
     set("bedDays", chf.format(result.occupiedBedDays));
     set("patonCost", "CHF " + chf.format(result.patonCost));
@@ -91,47 +163,41 @@
     set("netBenefit", "CHF " + chf.format(result.netBenefit));
     set(
       "ratio",
-      result.ratio === null
-        ? "—"
-        : decimal.format(result.ratio) + "× the indicative cost"
+      result.ratio === null ? "—" : decimal.format(result.ratio) + text.perFranc
     );
-    set("minutesPerBedPerDay", decimal.format(result.minutesPerBedPerDay) + " minutes");
+    set("minutesPerBedPerDay", decimal.format(result.minutesPerBedPerDay) + text.minutes);
 
     // Field read-outs next to each slider.
     set("bedsValue", chf.format(input.beds));
     set("occupancyValue", chf.format(input.occupancy) + "%");
     set("callsPerPatientDayValue", decimal.format(input.callsPerPatientDay));
-    set("wastedMinutesPerCallValue", decimal.format(input.wastedMinutesPerCall) + " min");
+    set("wastedMinutesPerCallValue", decimal.format(input.wastedMinutesPerCall) + text.minShort);
     set("nursingCostPerHourValue", "CHF " + chf.format(input.nursingCostPerHour));
     set("patonCostPerBedPerYearValue", "CHF " + chf.format(input.patonCostPerBedPerYear));
 
     syncPresets(input.beds);
 
+    var s = text.summary;
     lastSummary = [
-      "PATON — indicative savings estimate",
+      s.title,
       "",
-      "Your inputs",
-      "  Beds: " + chf.format(input.beds),
-      "  Occupancy: " + chf.format(input.occupancy) + "%",
-      "  Calls per patient-day: " + decimal.format(input.callsPerPatientDay),
-      "  Time lost per call: " + decimal.format(input.wastedMinutesPerCall) + " minutes",
-      "  Nursing cost per hour: CHF " + chf.format(input.nursingCostPerHour),
-      "  Indicative PATON cost per bed per year: CHF " +
-        chf.format(input.patonCostPerBedPerYear),
+      s.inputs,
+      s.beds + chf.format(input.beds),
+      s.occupancy + chf.format(input.occupancy) + "%",
+      s.calls + decimal.format(input.callsPerPatientDay),
+      s.wasted + decimal.format(input.wastedMinutesPerCall) + s.wastedUnit,
+      s.cost + chf.format(input.nursingCostPerHour),
+      s.patonCost + chf.format(input.patonCostPerBedPerYear),
       "",
-      "Modelled result per year",
-      "  Nurse calls: " + chf.format(result.calls),
-      "  Nursing time currently lost: " + chf.format(result.hoursLost) + " hours",
-      "  Value of that time: CHF " + chf.format(result.annualSaving),
-      "  Indicative PATON cost: CHF " + chf.format(result.patonCost),
-      "  Net benefit: CHF " + chf.format(result.netBenefit),
-      "  Time handed back per bed per day: " +
-        decimal.format(result.minutesPerBedPerDay) +
-        " minutes",
+      s.result,
+      s.resultCalls + chf.format(result.calls),
+      s.resultHours + chf.format(result.hoursLost) + s.resultHoursUnit,
+      s.resultValue + chf.format(result.annualSaving),
+      s.resultPatonCost + chf.format(result.patonCost),
+      s.resultNet + chf.format(result.netBenefit),
+      s.resultReturned + decimal.format(result.minutesPerBedPerDay) + s.wastedUnit,
       "",
-      "This is a model, not a quote. Assumptions and formula: " +
-        window.location.origin +
-        "/savings-calculator/",
+      s.footer + window.location.origin + s.path,
     ].join("\n");
   }
 
@@ -185,21 +251,18 @@
       event.preventDefault();
       var email = shareForm.querySelector('input[type="email"]').value.trim();
       if (!email) {
-        if (status) status.textContent = "Add an email address first.";
+        if (status) status.textContent = text.needEmail;
         return;
       }
       var href =
         "mailto:" +
         encodeURIComponent(email) +
         "?subject=" +
-        encodeURIComponent("PATON — indicative savings estimate") +
+        encodeURIComponent(text.subject) +
         "&body=" +
         encodeURIComponent(lastSummary);
       window.location.href = href;
-      if (status) {
-        status.textContent =
-          "Your email app should open with the summary. Nothing was sent to us.";
-      }
+      if (status) status.textContent = text.mailOpened;
     });
   }
 

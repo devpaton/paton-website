@@ -1,9 +1,10 @@
+{%- set a = art[lang] -%}
 {# Step 1: a bed device button pressed, the request leaving the bed. #}
 <svg
   class="steps__icon"
   viewBox="0 0 64 64"
   role="img"
-  aria-label="A button on a bed device being pressed, sending a request out."
+  aria-label="{{ a.stepRaisedAria }}"
   focusable="false"
 >
   <path d="M4 20 A 19 19 0 0 1 32 20" fill="none" stroke="#e77e4e" stroke-width="2" stroke-linecap="round" />

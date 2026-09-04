@@ -13,6 +13,14 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.addFilter("isoDate", (value) => new Date(value).toISOString().slice(0, 10));
 
+  // The two language trees mirror each other exactly — German at the root, English under
+  // /en/ — so a page's translation is a pure function of its own URL. No page has to
+  // declare where its sibling lives, and the pair can never fall out of step.
+  eleventyConfig.addFilter("inLanguage", (url, lang) => {
+    const rootPath = url.startsWith("/en/") ? url.slice(3) : url;
+    return lang === "en" ? "/en" + rootPath : rootPath;
+  });
+
   eleventyConfig.addGlobalData("buildYear", new Date().getFullYear());
 
   // Absolute URL for the sitemap and for canonical/OpenGraph tags.

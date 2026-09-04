@@ -1,9 +1,10 @@
+{%- set a = art[lang] -%}
 {# Step 2: the open requests stacked in order, the most urgent lifted to the top. #}
 <svg
   class="steps__icon"
   viewBox="0 0 64 64"
   role="img"
-  aria-label="Three stacked request rows ordered by urgency, with an arrow lifting the most urgent one to the top."
+  aria-label="{{ a.stepPrioritisedAria }}"
   focusable="false"
 >
   <rect x="6" y="14" width="36" height="10" rx="5" fill="#b7142c" />

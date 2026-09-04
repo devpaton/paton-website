@@ -1,9 +1,10 @@
+{%- set a = art[lang] -%}
 {# Step 4: type, time and outcome written down — the log the ward gets to keep. #}
 <svg
   class="steps__icon"
   viewBox="0 0 64 64"
   role="img"
-  aria-label="A logged record of answered requests, with the last one ticked off."
+  aria-label="{{ a.stepRecordedAria }}"
   focusable="false"
 >
   <rect x="10" y="8" width="44" height="48" rx="8" fill="#ffffff" stroke="#ddd2cf" stroke-width="2" />

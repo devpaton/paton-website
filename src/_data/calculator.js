@@ -33,10 +33,11 @@ module.exports = {
     patonCostPerBedPerYear: { min: 0, max: 5000, step: 50 },
   },
   // Presets are starting points, not the only answers — every field stays editable.
+  // The German labels are the Swiss hospital-typology terms, not literal translations.
   presets: [
-    { id: "specialised", label: "Specialised clinic", beds: 25 },
-    { id: "primary", label: "Primary care hospital", beds: 60 },
-    { id: "rehab", label: "Rehabilitation clinic", beds: 83 },
-    { id: "centre", label: "Centre-care hospital", beds: 296 },
+    { id: "specialised", label: { de: "Spezialklinik", en: "Specialised clinic" }, beds: 25 },
+    { id: "primary", label: { de: "Grundversorgung", en: "Primary care hospital" }, beds: 60 },
+    { id: "rehab", label: { de: "Rehaklinik", en: "Rehabilitation clinic" }, beds: 83 },
+    { id: "centre", label: { de: "Zentrumsspital", en: "Centre-care hospital" }, beds: 296 },
   ],
 };

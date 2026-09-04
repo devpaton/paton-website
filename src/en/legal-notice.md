@@ -1,6 +1,6 @@
 ---
 layout: layouts/page.njk
-permalink: /legalnotice/index.html
+permalink: /en/legalnotice/index.html
 title: Legal notice
 eyebrow: Legal
 lede: Who runs paton.ch, and the limits of what is published here.
@@ -30,8 +30,8 @@ parties.
 
 Figures published on this site are labelled according to what they are. Measurements from our pilot
 are described as measurements. Modelled or illustrative figures — including everything produced by
-the [savings calculator](/savings-calculator/) and the figures marked *Illustrative* in the
-[case study](/case-study/) — are models, not audited results, and must not be quoted as such.
+the [savings calculator](/en/savings-calculator/) and the figures marked *Illustrative* in the
+[case study](/en/case-study/) — are models, not audited results, and must not be quoted as such.
 
 ## Disclaimer for links
 
@@ -47,8 +47,9 @@ of individual content from this website will be pursued under civil and criminal
 
 ## Languages
 
-This site is published in English. A German version of this notice and of the
-[privacy policy](/privacy-policy/) is available on request from
+This site is published in German and in English. The German version at
+[paton.ch/legalnotice/](/legalnotice/) is the primary one; this English version is a translation
+provided for convenience. If the two ever differ, the German version applies. Questions to
 [info@paton.ch](mailto:info@paton.ch).
 
 <p class="note">Last updated: {{ updated }}</p>

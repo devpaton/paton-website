@@ -1,3 +1,4 @@
+{%- set a = art[lang] -%}
 {#
   The thing at the bed, drawn as the object rather than as a diagram: a pad with one large
   need button, a quieter second choice and a separate emergency, and the call already leaving.
@@ -8,7 +9,7 @@
   class="card__art"
   viewBox="0 0 220 180"
   role="img"
-  aria-label="A bed device: one large button for a need, a quieter second choice, a separate emergency button underneath, and the call leaving the bed."
+  aria-label="{{ a.bedDeviceAria }}"
   focusable="false"
 >
   <defs>

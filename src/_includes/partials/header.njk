@@ -1,6 +1,9 @@
+{%- set t = ui[lang] -%}
+{%- set dePath = page.url | inLanguage("de") -%}
+{%- set enPath = page.url | inLanguage("en") -%}
 <header class="site-header">
   <div class="shell site-header__inner">
-    <a class="site-header__brand" href="/" aria-label="{{ site.name }} home">
+    <a class="site-header__brand" href="{{ '/' | inLanguage(lang) }}" aria-label="{{ t.homeAria }}">
       {% include "partials/logo.njk" %}
     </a>
 
@@ -12,12 +15,12 @@
       data-nav-toggle
     >
       <span class="site-header__toggle-bars" aria-hidden="true"></span>
-      <span class="visually-hidden">Menu</span>
+      <span class="visually-hidden">{{ t.menu }}</span>
     </button>
 
-    <nav class="site-nav" id="site-nav" aria-label="Main">
+    <nav class="site-nav" id="site-nav" aria-label="{{ t.navAria }}">
       <ul class="site-nav__list">
-        {% for item in site.nav %}
+        {% for item in t.nav %}
           <li>
             <a
               href="{{ item.url }}"
@@ -26,8 +29,31 @@
           </li>
         {% endfor %}
       </ul>
-      <a class="button button--small" href="mailto:{{ site.email }}?subject=PATON%20—%20talk%20to%20us">
-        Talk to us
+
+      {#
+        Both links point at this page's own translation, not at the homepage: the two trees
+        mirror each other, so the sibling URL is derived from page.url by the inLanguage filter.
+      #}
+      <p class="lang-switch" role="group" aria-label="{{ t.languageAria }}">
+        <a
+          class="lang-switch__link"
+          href="{{ dePath }}"
+          lang="de"
+          hreflang="de"
+          {% if lang == "de" %}aria-current="true"{% endif %}
+        >DE</a>
+        <span class="lang-switch__sep" aria-hidden="true">/</span>
+        <a
+          class="lang-switch__link"
+          href="{{ enPath }}"
+          lang="en"
+          hreflang="en"
+          {% if lang == "en" %}aria-current="true"{% endif %}
+        >EN</a>
+      </p>
+
+      <a class="button button--small" href="mailto:{{ site.email }}?subject={{ t.talkToUsSubject | urlencode }}">
+        {{ t.talkToUs }}
       </a>
     </nav>
   </div>

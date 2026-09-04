@@ -1,6 +1,6 @@
 ---
 layout: layouts/page.njk
-permalink: /privacy-policy/index.html
+permalink: /en/privacy-policy/index.html
 title: Privacy policy
 eyebrow: Legal
 lede: >-
@@ -30,7 +30,7 @@ EU General Data Protection Regulation (GDPR).
 
 - This website sets **no cookies of its own** — none at all, essential or otherwise.
 - There is **no analytics, no tracking pixel and no advertising script** anywhere on the site.
-- The [savings calculator](/savings-calculator/) works **without giving us anything**. It runs in
+- The [savings calculator](/en/savings-calculator/) works **without giving us anything**. It runs in
   your browser and no result is ever sent to us.
 - Nothing on this site asks you to create an account.
 
@@ -103,7 +103,8 @@ before it runs.
 
 ## Languages
 
-This policy is published in English. A German version is available on request from
-[info@paton.ch](mailto:info@paton.ch).
+This policy is published in German and in English. The German version at
+[paton.ch/privacy-policy/](/privacy-policy/) is the primary one; this English version is a
+translation provided for convenience. If the two ever differ, the German version applies.
 
 <p class="note">Last updated: {{ updated }}</p>

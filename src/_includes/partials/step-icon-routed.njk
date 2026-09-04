@@ -1,9 +1,10 @@
+{%- set a = art[lang] -%}
 {# Step 3: the request travelling to the member of staff whose qualification it needs. #}
 <svg
   class="steps__icon"
   viewBox="0 0 64 64"
   role="img"
-  aria-label="A request travelling along a dashed path to the member of staff qualified to answer it."
+  aria-label="{{ a.stepRoutedAria }}"
   focusable="false"
 >
   <path
