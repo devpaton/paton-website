@@ -1,0 +1,41 @@
+<footer class="site-footer">
+  <div class="shell site-footer__inner">
+    <div class="site-footer__brand">
+      <a href="/" aria-label="{{ site.name }} home">{% include "partials/logo.njk" %}</a>
+      <p class="site-footer__blurb">{{ site.description }}</p>
+      <p class="site-footer__place">{{ site.city }}, {{ site.country }}</p>
+    </div>
+
+    <div class="site-footer__cols">
+      <div>
+        <h2 class="site-footer__heading">Site</h2>
+        <ul>
+          {% for item in site.nav %}
+            <li><a href="{{ item.url }}">{{ item.text }}</a></li>
+          {% endfor %}
+        </ul>
+      </div>
+      <div>
+        <h2 class="site-footer__heading">Legal</h2>
+        <ul>
+          {% for item in site.legalNav %}
+            <li><a href="{{ item.url }}">{{ item.text }}</a></li>
+          {% endfor %}
+        </ul>
+      </div>
+      <div>
+        <h2 class="site-footer__heading">Contact</h2>
+        <ul>
+          <li><a href="mailto:{{ site.email }}">{{ site.email }}</a></li>
+          <li><a href="{{ site.social.linkedin }}" rel="noopener">LinkedIn</a></li>
+          <li><a href="{{ site.social.twitter }}" rel="noopener">X / Twitter</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="shell site-footer__legal">
+    <p>&copy; {{ site.founded }}–{{ buildYear }} {{ site.name }}. All rights reserved.</p>
+    <p>This site sets no tracking or analytics cookies.</p>
+  </div>
+</footer>
