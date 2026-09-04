@@ -109,12 +109,15 @@
     outputs[el.getAttribute("data-out")] = el;
   });
 
-  function readValue(key) {
-    var input = fields[key].number || fields[key].range;
+  function clamp(key, value) {
     var limits = config.limits[key];
-    var value = parseFloat(input.value);
     if (!isFinite(value)) value = config.defaults[key];
     return Math.min(limits.max, Math.max(limits.min, value));
+  }
+
+  function readValue(key) {
+    var input = fields[key].number || fields[key].range;
+    return clamp(key, parseFloat(input.value));
   }
 
   function model(input) {
@@ -208,7 +211,9 @@
       var el = pair[kind];
       if (!el) return;
       el.addEventListener("input", function () {
-        var value = readValue(key);
+        // Read from whichever control the visitor is actually moving, not always the
+        // number box — otherwise the slider recomputes against its own stale value.
+        var value = clamp(key, parseFloat(el.value));
         if (pair.range && pair.range !== el) pair.range.value = value;
         if (pair.number && pair.number !== el && document.activeElement !== pair.number) {
           pair.number.value = value;
@@ -216,7 +221,7 @@
         render();
       });
       el.addEventListener("change", function () {
-        var value = readValue(key);
+        var value = clamp(key, parseFloat(el.value));
         if (pair.range) pair.range.value = value;
         if (pair.number) pair.number.value = value;
         render();
