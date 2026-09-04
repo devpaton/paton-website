@@ -1,0 +1,47 @@
+# Pull request preview: builds the site and publishes it to a temporary Firebase Hosting
+# preview channel. The action comments the preview URL on the pull request itself.
+#
+# Uses the same repository secret as the live deploy:
+#   FIREBASE_SERVICE_ACCOUNT_PATON_WEBSITE
+#
+# `pull_request` (not `pull_request_target`) is deliberate: a fork's pull request must not
+# get access to the service account. Those runs will skip the deploy step rather than fail.
+name: Preview deploy
+
+on:
+  pull_request:
+    branches: [main]
+
+concurrency:
+  group: hosting-preview-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+  checks: write
+  pull-requests: write
+
+jobs:
+  preview:
+    name: Build and deploy preview
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - run: npm ci
+
+      - name: Build the site
+        run: npm run build
+
+      - uses: FirebaseExtended/action-hosting-deploy@v0
+        if: github.event.pull_request.head.repo.full_name == github.repository
+        with:
+          repoToken: ${{ secrets.GITHUB_TOKEN }}
+          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_PATON_WEBSITE }}
+          projectId: paton-website
+          expires: 14d
