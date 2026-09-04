@@ -1,0 +1,186 @@
+---
+layout: layouts/base.njk
+permalink: /about/index.html
+title: Über uns
+description: >-
+  PATON ist ein MedTech- und Kommunikations-Start-up in Zürich, 2021 von drei Studierenden der
+  Zürcher Hochschule für Angewandte Wissenschaften gegründet.
+---
+{#
+  Deliberately image-free (issue #50): no portraits, no stock photography, no partner logos.
+  People are listed by name and responsibility; everything else is text and data.
+#}
+<section class="page-head">
+  <div class="shell">
+    <p class="eyebrow">Über uns</p>
+    <h1>Patients to nurses.</h1>
+    <p class="lede">
+      PATON ist ein MedTech- und Kommunikations-Start-up mit Sitz in {{ site.city[lang] }}.
+      Gegründet wurde es {{ site.founded }} von drei Studierenden der Zürcher Hochschule für
+      Angewandte Wissenschaften, mit einem Ziel: zu verändern, wie eine Station von den Menschen in
+      ihren Betten hört.
+    </p>
+  </div>
+</section>
+
+<section class="section section--tight">
+  <div class="shell">
+    <div class="grid grid--3">
+      <div class="stat">
+        <span class="stat__value">{{ site.founded }}</span>
+        <span class="stat__label">gegründet an der Zürcher Hochschule für Angewandte Wissenschaften</span>
+      </div>
+      <div class="stat">
+        <span class="stat__value">5</span>
+        <span class="stat__label">Personen, drei davon Mitgründer</span>
+      </div>
+      <div class="stat">
+        <span class="stat__value">1</span>
+        <span class="stat__label">klinischer Pilot, mehr als tausend erfasste Rufereignisse</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--soft">
+  <div class="shell split split--sticky">
+    <div>
+      <p class="eyebrow">Das Team</p>
+      <h2>Fünf Personen, keine Ebenen.</h2>
+      <p>
+        Klein genug, dass wer Ihre E-Mail beantwortet auch die Person ist, die tatsächlich an Ihrer
+        Station arbeiten wird.
+      </p>
+    </div>
+
+    <div class="rows">
+      <div class="rows__item">
+        <div>
+          <h3>Raphael Schnyder</h3>
+          <span class="rows__role">Mitgründer &amp; CEO</span>
+        </div>
+        <p>Strategie, und oberster Patoneer.</p>
+      </div>
+      <div class="rows__item">
+        <div>
+          <h3>Frensi Zejnullahu</h3>
+          <span class="rows__role">Mitgründer &amp; CFO</span>
+        </div>
+        <p>Finanzen und Betrieb.</p>
+      </div>
+      <div class="rows__item">
+        <div>
+          <h3>Ibukun Jeremiah Agboola</h3>
+          <span class="rows__role">Mitgründer &amp; CTO</span>
+        </div>
+        <p>Produktkonzeption und Software.</p>
+      </div>
+      <div class="rows__item">
+        <div>
+          <h3>Selin Sengül</h3>
+          <span class="rows__role">Pilotprojekte</span>
+        </div>
+        <p>Pilotprojekte und Kommunikation.</p>
+      </div>
+      <div class="rows__item">
+        <div>
+          <h3>Sebastian Brunner</h3>
+          <span class="rows__role">Entwicklung</span>
+        </div>
+        <p>Backend und Lösungsarchitektur.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="shell split split--sticky">
+    <div>
+      <p class="eyebrow">Wo wir stehen</p>
+      <h2>Roadmap</h2>
+      <p>
+        Nüchtern geschrieben, denn eine Roadmap, die nur Erfolge auflistet, ist keine.
+      </p>
+    </div>
+
+    {#
+      TODO: confirm the exact dates of the pilot and of the next milestone with the team
+      before launch, in BOTH language versions. Only the founding year is stated as a hard
+      date here on purpose.
+    #}
+    <ol class="timeline">
+      <li>
+        <span class="timeline__when">{{ site.founded }}</span>
+        <h3>Gegründet</h3>
+        <p>
+          Drei Studierende der Zürcher Hochschule für Angewandte Wissenschaften gründen PATON,
+          nachdem sie Zeit auf Stationen verbracht und beobachtet haben, wie viel einer Schicht der
+          Schwesternruf im Stillen verbraucht.
+        </p>
+      </li>
+      <li>
+        <span class="timeline__when">Forschung</span>
+        <h3>Wir sind hingegangen und haben gezählt</h3>
+        <p>
+          Beobachtung und Interviews auf echten Stationen — daher stammt das wiederkehrende Muster:
+          Anfrage und Qualifikation passen selten zusammen, und der Gang wird doppelt gelaufen.
+        </p>
+      </li>
+      <li>
+        <span class="timeline__when">Pilot</span>
+        <h3>Geriatrische Klinik St.&nbsp;Gallen</h3>
+        <p>
+          Das System läuft auf einer Station im Betrieb und erfasst mehr als tausend Rufereignisse,
+          samt der jeweils benötigten Qualifikation und dem Laufweg jeder Reaktion.
+          <a href="/case-study/">Zur Fallstudie.</a>
+        </p>
+      </li>
+      <li>
+        <span class="timeline__when">Jetzt</span>
+        <h3>Im Gespräch mit Stationen</h3>
+        <p>
+          Wir arbeiten mit Kliniken, die dieselbe Transparenz wollen, und machen aus den
+          Erkenntnissen des Piloten ein Produkt, das sich installieren statt begleiten lässt.
+        </p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<section class="section section--soft">
+  <div class="shell">
+    <div class="section-head">
+      <p class="eyebrow">Unterstützung</p>
+      <h2>Menschen und Institutionen, die geholfen haben</h2>
+      <p>
+        PATON wurde auf dem Weg von der ZHAW School of Engineering und von Venture Kick
+        unterstützt — und von einer langen Liste von Menschen, die uns Zeit, Kontakte und ehrliches
+        Feedback gegeben haben.
+      </p>
+    </div>
+
+    <p class="note" style="max-width: 60rem; line-height: 2">
+      Nicolas&nbsp;W. · Laura&nbsp;M. · Remo&nbsp;P. · Carla&nbsp;W. · Marco&nbsp;W. ·
+      Franziska&nbsp;S. · Markus&nbsp;W. · Harry&nbsp;Zwi&nbsp;K. · Birgitta&nbsp;B. ·
+      Massimo&nbsp;G. · Florian&nbsp;M. · Simon&nbsp;M. · Roman&nbsp;E. · Adrian&nbsp;A. ·
+      Fabian&nbsp;B. · Julia&nbsp;E. · Nikolaus&nbsp;v.&nbsp;M. · Stephanie&nbsp;G. ·
+      Matthew&nbsp;M. · Dennis&nbsp;B. · Patrick&nbsp;E. · Karim&nbsp;I. · Fabia&nbsp;M. ·
+      Yvo&nbsp;S. · Denise&nbsp;A. · Remo&nbsp;S. · Tabea&nbsp;S. · Beat&nbsp;G. ·
+      Aline&nbsp;B. · Rebekka&nbsp;N. · Sarah&nbsp;B. · Melanie&nbsp;P.
+    </p>
+  </div>
+</section>
+
+<section class="section section--tight">
+  <div class="shell">
+    <div class="cta">
+      <div>
+        <h2>Kontakt aufnehmen</h2>
+        <p>Ein Postfach, gelesen von den Menschen, die das Ding bauen.</p>
+      </div>
+      <div class="button-row">
+        <a class="button button--light" href="mailto:{{ site.email }}">{{ site.email }}</a>
+      </div>
+    </div>
+  </div>
+</section>
