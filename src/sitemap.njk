@@ -1,0 +1,18 @@
+---
+permalink: /sitemap.xml
+eleventyExcludeFromCollections: true
+---
+{#-
+  Generated from the pages Eleventy actually built, so it can never drift from the site.
+  Only directory-index URLs are listed, which excludes /404.html, this file and robots.txt.
+  No <lastmod>: file timestamps in CI are checkout times, not edit times, so publishing them
+  would be worse than publishing nothing.
+-#}
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+{%- for item in collections.all %}
+{%- if item.url and item.url.endsWith("/") %}
+  <url><loc>{{ item.url | absoluteUrl(site.url) }}</loc></url>
+{%- endif %}
+{%- endfor %}
+</urlset>
