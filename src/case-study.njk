@@ -1,0 +1,206 @@
+---
+layout: layouts/base.njk
+permalink: /case-study/index.html
+title: Pilot case study
+description: >-
+  PATON's pilot at the Geriatrische Klinik St. Gallen logged more than a thousand call events
+  and recorded the qualification each request needed and the walking distance it cost.
+---
+<!--
+  PUBLICATION CONSENT REQUIRED — READ BEFORE THIS SITE GOES LIVE.
+
+  This page names the Geriatrische Klinik St. Gallen as PATON's pilot partner. Naming a clinic,
+  describing its ward, or showing its logo or wordmark on a public marketing site needs the
+  clinic's confirmed, written permission — that is a decision for the clinic and for PATON, not
+  something the build can determine.
+
+  Before launch:
+    1. Obtain and file written permission to name the clinic publicly and to publish these figures.
+    2. If permission is not granted, anonymise this page ("a geriatric clinic in eastern
+       Switzerland") and remove the clinic name from src/_data/site.js, the homepage and the
+       About page as well.
+    3. The clinic's logo is deliberately NOT used anywhere on this site. Do not add it without
+       separate, explicit permission covering the logo itself.
+    4. The pull quote below is a placeholder. Do not replace it with anything that has not been
+       written and signed off by the named person.
+-->
+<section class="page-head">
+  <div class="shell">
+    <p class="eyebrow">Case study</p>
+    <h1>What a thousand nurse calls actually looked like.</h1>
+    <p class="lede">
+      PATON ran a pilot at the Geriatrische Klinik St.&nbsp;Gallen. For the first time, every call
+      on the ward left a record — not just that a light went on, but what was asked for, which
+      qualification it needed, and how far somebody walked to answer it.
+    </p>
+  </div>
+</section>
+
+<section class="section section--tight">
+  <div class="shell">
+    <div class="grid grid--3">
+      <div class="stat">
+        <span class="stat__value">1&nbsp;000+</span>
+        <span class="stat__label">call events logged over the pilot</span>
+      </div>
+      <div class="stat stat--word">
+        <span class="stat__value">Qualification</span>
+        <span class="stat__label">captured for every request, not sampled</span>
+      </div>
+      <div class="stat stat--word">
+        <span class="stat__value">Walking&nbsp;distance</span>
+        <span class="stat__label">recorded per response</span>
+      </div>
+    </div>
+    <p class="note" style="margin-top: 1.5rem">
+      These three are measurements from the pilot itself. Everything further down this page that is
+      a model rather than a measurement is marked <span class="tag">Illustrative</span>.
+    </p>
+  </div>
+</section>
+
+<section class="section section--soft">
+  <div class="shell split split--sticky">
+    <div>
+      <p class="eyebrow">Situation</p>
+      <h2>A geriatric ward is the hard case.</h2>
+    </div>
+    <div>
+      <p>
+        Geriatric care concentrates everything that makes the old nurse call expensive. Patients
+        press often and for a wide spread of reasons, from a genuine emergency to help getting to
+        the bathroom. Many requests need a specific qualification; many others need none at all, but
+        nobody on the receiving end can tell which is which.
+      </p>
+      <p>
+        The clinic's existing system did what every nurse call does: it announced a room. Staff had
+        no way to prepare, so a large share of responses ended with somebody walking back out of the
+        room to fetch something or to fetch somebody.
+      </p>
+      <p>
+        The ward's own sense was that this was costing real time. What nobody had was a number,
+        because a bell cannot produce one.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="shell split split--sticky">
+    <div>
+      <p class="eyebrow">What we deployed</p>
+      <h2>Bed devices, nurse devices, and a log.</h2>
+    </div>
+    <div>
+      <p>
+        Bed devices let patients raise a specific need instead of an anonymous call, with a separate
+        emergency action that always went out at top priority. Staff on shift carried nurse devices
+        that listed the open requests for the ward, each with room, bed, the need itself, and how
+        long it had been waiting.
+      </p>
+      <p>
+        Behind both, every event was logged: what was raised, when, which qualification the request
+        called for, and the distance the response involved. That log — not the devices — is the part
+        of the pilot that changed the conversation with the ward.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="section section--soft">
+  <div class="shell">
+    <div class="section-head">
+      <p class="eyebrow">Results</p>
+      <h2>What the log showed</h2>
+      <p>
+        The event count and the two tracked dimensions are real pilot data. The response-side
+        figures below are <strong>illustrative</strong>: they are the shape of outcome the model
+        predicts and the pilot pointed towards, published here as an example rather than as a
+        verified clinical result. Ask us for the pilot data itself.
+      </p>
+    </div>
+
+    <div class="table-scroll">
+      <table style="width: 100%; border-collapse: collapse">
+        <caption class="visually-hidden">Pilot measurements and illustrative outcome figures</caption>
+        <thead>
+          <tr>
+            <th scope="col" style="text-align: left; padding: 0.7rem 0.75rem; border-bottom: 2px solid var(--line-strong)">What</th>
+            <th scope="col" style="text-align: left; padding: 0.7rem 0.75rem; border-bottom: 2px solid var(--line-strong)">Figure</th>
+            <th scope="col" style="text-align: left; padding: 0.7rem 0.75rem; border-bottom: 2px solid var(--line-strong)">Basis</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="padding: 0.85rem 0.75rem; border-bottom: 1px solid var(--line)">Call events captured</td>
+            <td style="padding: 0.85rem 0.75rem; border-bottom: 1px solid var(--line)"><strong>1&nbsp;000+</strong></td>
+            <td style="padding: 0.85rem 0.75rem; border-bottom: 1px solid var(--line)">Logged in the pilot</td>
+          </tr>
+          <tr>
+            <td style="padding: 0.85rem 0.75rem; border-bottom: 1px solid var(--line)">Requests with the needed qualification recorded</td>
+            <td style="padding: 0.85rem 0.75rem; border-bottom: 1px solid var(--line)"><strong>Every one</strong></td>
+            <td style="padding: 0.85rem 0.75rem; border-bottom: 1px solid var(--line)">Logged in the pilot</td>
+          </tr>
+          <tr>
+            <td style="padding: 0.85rem 0.75rem; border-bottom: 1px solid var(--line)">Walking distance per response</td>
+            <td style="padding: 0.85rem 0.75rem; border-bottom: 1px solid var(--line)"><strong>Tracked</strong></td>
+            <td style="padding: 0.85rem 0.75rem; border-bottom: 1px solid var(--line)">Logged in the pilot</td>
+          </tr>
+          <tr>
+            <td style="padding: 0.85rem 0.75rem; border-bottom: 1px solid var(--line)">Responses resolved without leaving the room again</td>
+            <td style="padding: 0.85rem 0.75rem; border-bottom: 1px solid var(--line)"><strong>~4 in 5</strong></td>
+            <td style="padding: 0.85rem 0.75rem; border-bottom: 1px solid var(--line)"><span class="tag">Illustrative</span></td>
+          </tr>
+          <tr>
+            <td style="padding: 0.85rem 0.75rem; border-bottom: 1px solid var(--line)">Reduction in average walking distance per call</td>
+            <td style="padding: 0.85rem 0.75rem; border-bottom: 1px solid var(--line)"><strong>~30%</strong></td>
+            <td style="padding: 0.85rem 0.75rem; border-bottom: 1px solid var(--line)"><span class="tag">Illustrative</span></td>
+          </tr>
+          <tr>
+            <td style="padding: 0.85rem 0.75rem; border-bottom: 1px solid var(--line)">Time from call to the right person starting to move</td>
+            <td style="padding: 0.85rem 0.75rem; border-bottom: 1px solid var(--line)"><strong>~2 minutes faster</strong></td>
+            <td style="padding: 0.85rem 0.75rem; border-bottom: 1px solid var(--line)"><span class="tag">Illustrative</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="note" style="margin-top: 1.25rem">
+      Illustrative figures are examples of the outcome the model predicts for a ward of this shape.
+      They are not audited results and should not be quoted as such.
+    </p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="shell shell--narrow">
+    <blockquote class="pull">
+      <p><span class="placeholder">[Quote from ward lead — pending sign-off]</span></p>
+      <footer>
+        We will not publish words we put in someone else's mouth. This space stays empty until the
+        ward lead has written and approved a quote of their own.
+      </footer>
+    </blockquote>
+  </div>
+</section>
+
+<section class="section section--dark">
+  <div class="shell">
+    <div class="section-head">
+      <p class="eyebrow">What we learned</p>
+      <h2>The log is the product.</h2>
+      <p>
+        The devices are the visible part, but the thing the ward could not get anywhere else was a
+        record. Once a ward can see which requests it actually receives, which qualification each
+        one needs, and what each response costs in walking, the conversation about staffing and
+        layout stops being a matter of opinion.
+      </p>
+    </div>
+    <div class="button-row">
+      <a class="button button--light" href="/savings-calculator/">Model this for your own ward</a>
+      <a class="button button--outline-light" href="mailto:{{ site.email }}?subject=PATON%20—%20pilot%20data">
+        Ask for the pilot data
+      </a>
+    </div>
+  </div>
+</section>
