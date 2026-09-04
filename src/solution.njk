@@ -15,6 +15,14 @@ description: >-
       instantly — that part is untouchable — but the ward now receives a request it can act on
       before anyone starts walking.
     </p>
+
+    <figure class="page-art">
+      {% include "partials/ward-art.njk" %}
+      <figcaption class="note">
+        One ward, one request: raised at the bed, ordered against everything else open, and
+        delivered to the nurse device with the qualification it needs.
+      </figcaption>
+    </figure>
   </div>
 </section>
 
@@ -60,12 +68,14 @@ description: >-
       <p class="eyebrow">The loop</p>
       <h2>From press to resolved</h2>
     </div>
-    <ol class="steps">
+    <ol class="steps steps--illustrated">
       <li>
+        {% include "partials/step-icon-raised.njk" %}
         <h3>Raised</h3>
         <p>The patient picks a need, or triggers an emergency. Both leave the bed immediately.</p>
       </li>
       <li>
+        {% include "partials/step-icon-prioritised.njk" %}
         <h3>Prioritised</h3>
         <p>
           The request is ordered against everything else open on the ward, with emergencies always
@@ -73,6 +83,7 @@ description: >-
         </p>
       </li>
       <li>
+        {% include "partials/step-icon-routed.njk" %}
         <h3>Routed</h3>
         <p>
           It reaches the nurse devices on shift, tagged with the qualification the request needs so
@@ -80,6 +91,7 @@ description: >-
         </p>
       </li>
       <li>
+        {% include "partials/step-icon-recorded.njk" %}
         <h3>Recorded</h3>
         <p>
           Type, time and outcome are logged. Over a few weeks that becomes an honest picture of what

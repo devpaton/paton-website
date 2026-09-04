@@ -568,6 +568,24 @@ hr {
   filter: drop-shadow(0 24px 48px rgba(74, 5, 17, 0.12));
 }
 
+/* Wider illustration under a page head: a ward strip feeding one nurse device. */
+.page-art {
+  margin: clamp(2rem, 4vw, 3rem) 0 0;
+  max-width: 64rem;
+}
+
+.ward-art {
+  display: block;
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 24px 48px rgba(74, 5, 17, 0.12));
+}
+
+.page-art figcaption {
+  margin-top: 1rem;
+  max-width: 42rem;
+}
+
 /* ---------- cards ---------- */
 
 .card {
@@ -643,6 +661,21 @@ hr {
 .steps p {
   margin-bottom: 0;
   color: var(--ink-2);
+}
+
+/* Variant with a glyph per step: the number moves out of the way, into the corner. */
+.steps--illustrated li::before {
+  position: absolute;
+  top: 1.75rem;
+  right: 1.5rem;
+  margin-bottom: 0;
+}
+
+.steps__icon {
+  display: block;
+  width: 3.25rem;
+  height: 3.25rem;
+  margin-bottom: 1rem;
 }
 
 /* ---------- stats ---------- */
