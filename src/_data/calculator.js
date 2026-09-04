@@ -20,9 +20,6 @@ module.exports = {
     callsPerPatientDay: 8,
     wastedMinutesPerCall: 2.5,
     nursingCostPerHour: 62,
-    // Indicative list price only, so the page can show "your cost vs our price".
-    // TODO: replace with the confirmed commercial price before launch.
-    patonCostPerBedPerYear: 900,
   },
   limits: {
     beds: { min: 1, max: 2000, step: 1 },
@@ -30,7 +27,6 @@ module.exports = {
     callsPerPatientDay: { min: 1, max: 30, step: 0.5 },
     wastedMinutesPerCall: { min: 0.5, max: 15, step: 0.5 },
     nursingCostPerHour: { min: 20, max: 200, step: 1 },
-    patonCostPerBedPerYear: { min: 0, max: 5000, step: 50 },
   },
   // Presets are starting points, not the only answers — every field stays editable.
   // The German labels are the Swiss hospital-typology terms, not literal translations.

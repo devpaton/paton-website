@@ -25,7 +25,6 @@
       hours: " h",
       minutes: " Minuten",
       minShort: " Min.",
-      perFranc: "× der Richtkosten",
       needEmail: "Bitte zuerst eine E-Mail-Adresse eingeben.",
       mailOpened:
         "Ihr E-Mail-Programm sollte sich mit der Zusammenfassung öffnen. An uns wurde nichts gesendet.",
@@ -39,14 +38,11 @@
         wasted: "  Zeitverlust pro Ruf: ",
         wastedUnit: " Minuten",
         cost: "  Pflegekosten pro Stunde: CHF ",
-        patonCost: "  Richtwert PATON-Kosten pro Bett und Jahr: CHF ",
         result: "Modelliertes Ergebnis pro Jahr",
         resultCalls: "  Schwesternrufe: ",
         resultHours: "  Aktuell verlorene Pflegezeit: ",
         resultHoursUnit: " Stunden",
         resultValue: "  Wert dieser Zeit: CHF ",
-        resultPatonCost: "  Richtwert PATON-Kosten: CHF ",
-        resultNet: "  Netto-Nutzen: CHF ",
         // Never an FTE or headcount figure — see the rule above.
         resultReturned: "  Zurückgegebene Zeit pro Bett und Tag: ",
         footer: "Dies ist ein Modell, keine Offerte. Annahmen und Formel: ",
@@ -57,7 +53,6 @@
       hours: " h",
       minutes: " minutes",
       minShort: " min",
-      perFranc: "× the indicative cost",
       needEmail: "Add an email address first.",
       mailOpened: "Your email app should open with the summary. Nothing was sent to us.",
       subject: "PATON — indicative savings estimate",
@@ -70,14 +65,11 @@
         wasted: "  Time lost per call: ",
         wastedUnit: " minutes",
         cost: "  Nursing cost per hour: CHF ",
-        patonCost: "  Indicative PATON cost per bed per year: CHF ",
         result: "Modelled result per year",
         resultCalls: "  Nurse calls: ",
         resultHours: "  Nursing time currently lost: ",
         resultHoursUnit: " hours",
         resultValue: "  Value of that time: CHF ",
-        resultPatonCost: "  Indicative PATON cost: CHF ",
-        resultNet: "  Net benefit: CHF ",
         // Never an FTE or headcount figure — see the rule above.
         resultReturned: "  Time handed back per bed per day: ",
         footer: "This is a model, not a quote. Assumptions and formula: ",
@@ -126,17 +118,12 @@
     var minutesLost = calls * input.wastedMinutesPerCall;
     var hoursLost = minutesLost / 60;
     var annualSaving = hoursLost * input.nursingCostPerHour;
-    var patonCost = input.beds * input.patonCostPerBedPerYear;
 
     return {
       occupiedBedDays: occupiedBedDays,
       calls: calls,
       hoursLost: hoursLost,
       annualSaving: annualSaving,
-      patonCost: patonCost,
-      netBenefit: annualSaving - patonCost,
-      // Ratio of value returned per franc spent; 0 guard keeps the display sane.
-      ratio: patonCost > 0 ? annualSaving / patonCost : null,
       // Soft capacity framing only — minutes back per bed per day. Never an FTE count.
       minutesPerBedPerDay:
         input.beds > 0 ? (input.callsPerPatientDay * (input.occupancy / 100)) * input.wastedMinutesPerCall : 0,
@@ -161,13 +148,6 @@
     set("hoursLost", chf.format(result.hoursLost) + text.hours);
     set("calls", chf.format(result.calls));
     set("bedDays", chf.format(result.occupiedBedDays));
-    set("patonCost", "CHF " + chf.format(result.patonCost));
-    set("grossSaving", "CHF " + chf.format(result.annualSaving));
-    set("netBenefit", "CHF " + chf.format(result.netBenefit));
-    set(
-      "ratio",
-      result.ratio === null ? "—" : decimal.format(result.ratio) + text.perFranc
-    );
     set("minutesPerBedPerDay", decimal.format(result.minutesPerBedPerDay) + text.minutes);
 
     // Field read-outs next to each slider.
@@ -176,7 +156,6 @@
     set("callsPerPatientDayValue", decimal.format(input.callsPerPatientDay));
     set("wastedMinutesPerCallValue", decimal.format(input.wastedMinutesPerCall) + text.minShort);
     set("nursingCostPerHourValue", "CHF " + chf.format(input.nursingCostPerHour));
-    set("patonCostPerBedPerYearValue", "CHF " + chf.format(input.patonCostPerBedPerYear));
 
     syncPresets(input.beds);
 
@@ -190,14 +169,11 @@
       s.calls + decimal.format(input.callsPerPatientDay),
       s.wasted + decimal.format(input.wastedMinutesPerCall) + s.wastedUnit,
       s.cost + chf.format(input.nursingCostPerHour),
-      s.patonCost + chf.format(input.patonCostPerBedPerYear),
       "",
       s.result,
       s.resultCalls + chf.format(result.calls),
       s.resultHours + chf.format(result.hoursLost) + s.resultHoursUnit,
       s.resultValue + chf.format(result.annualSaving),
-      s.resultPatonCost + chf.format(result.patonCost),
-      s.resultNet + chf.format(result.netBenefit),
       s.resultReturned + decimal.format(result.minutesPerBedPerDay) + s.wastedUnit,
       "",
       s.footer + window.location.origin + s.path,

@@ -74,10 +74,6 @@ description: >-
         {{ field("callsPerPatientDay", "Nurse calls per patient-day", "Swiss hospital statistics put this at roughly 8.", "calls") }}
         {{ field("wastedMinutesPerCall", "Minutes lost per call", "Walking back for equipment, finding a qualified colleague, checking an accidental call.", "minutes") }}
         {{ field("nursingCostPerHour", "Nursing cost per hour (CHF)", "Fully loaded cost of an hour of nursing time, including employer costs.", "CHF per hour") }}
-
-        <hr />
-
-        {{ field("patonCostPerBedPerYear", "Indicative PATON cost per bed per year (CHF)", "Indicative only — not a quote. Set it to zero to see the gross figure alone.", "CHF per bed per year") }}
       </div>
 
       <div>
@@ -101,26 +97,6 @@ description: >-
               <dd data-out="hoursLost">—</dd>
             </div>
           </dl>
-
-          <div class="calc__compare">
-            <p class="eyebrow" style="margin: 0 0 0.5rem; color: var(--orange)">Your cost vs our price</p>
-            <div class="calc__compare-row">
-              <span>Time you are losing today</span>
-              <span data-out="grossSaving">—</span>
-            </div>
-            <div class="calc__compare-row">
-              <span>Indicative PATON cost</span>
-              <span data-out="patonCost">—</span>
-            </div>
-            <div class="calc__compare-row calc__compare-row--total">
-              <span>Net benefit a year</span>
-              <span data-out="netBenefit">—</span>
-            </div>
-            <div class="calc__compare-row">
-              <span>Value returned per franc spent</span>
-              <span data-out="ratio">—</span>
-            </div>
-          </div>
 
           {#
             Capacity framing, kept deliberately soft. This is minutes handed back to the ward —
@@ -171,8 +147,8 @@ description: >-
               why every one of them is an input rather than a constant.
             </p>
             <p>
-              The PATON cost figure is indicative and is there so the comparison is honest. It is
-              not a quote. <a href="mailto:{{ site.email }}?subject=PATON%20—%20pricing">Ask us for a real one.</a>
+              This page shows the time lost, not a PATON price — there isn't a public one yet.
+              <a href="mailto:{{ site.email }}?subject=PATON%20—%20pricing">Ask us for one.</a>
             </p>
             <p class="note">
               This is a model of avoidable time, not a promise of cash released. Treat it the way

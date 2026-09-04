@@ -76,10 +76,6 @@ description: >-
         {{ field("callsPerPatientDay", "Schwesternrufe pro Patiententag", "Die Schweizer Spitalstatistik legt das bei rund 8.", "Rufe") }}
         {{ field("wastedMinutesPerCall", "Verlorene Minuten pro Ruf", "Zurücklaufen für ein Hilfsmittel, eine qualifizierte Kollegin suchen, einen versehentlichen Ruf prüfen.", "Minuten") }}
         {{ field("nursingCostPerHour", "Pflegekosten pro Stunde (CHF)", "Vollkosten einer Pflegestunde, inklusive Arbeitgeberbeiträge.", "CHF pro Stunde") }}
-
-        <hr />
-
-        {{ field("patonCostPerBedPerYear", "Richtwert PATON-Kosten pro Bett und Jahr (CHF)", "Nur ein Richtwert — keine Offerte. Auf null setzen, um allein den Bruttowert zu sehen.", "CHF pro Bett und Jahr") }}
       </div>
 
       <div>
@@ -103,26 +99,6 @@ description: >-
               <dd data-out="hoursLost">—</dd>
             </div>
           </dl>
-
-          <div class="calc__compare">
-            <p class="eyebrow" style="margin: 0 0 0.5rem; color: var(--orange)">Ihre Kosten gegen unseren Preis</p>
-            <div class="calc__compare-row">
-              <span>Zeit, die Sie heute verlieren</span>
-              <span data-out="grossSaving">—</span>
-            </div>
-            <div class="calc__compare-row">
-              <span>Richtwert PATON-Kosten</span>
-              <span data-out="patonCost">—</span>
-            </div>
-            <div class="calc__compare-row calc__compare-row--total">
-              <span>Netto-Nutzen pro Jahr</span>
-              <span data-out="netBenefit">—</span>
-            </div>
-            <div class="calc__compare-row">
-              <span>Wert pro eingesetztem Franken</span>
-              <span data-out="ratio">—</span>
-            </div>
-          </div>
 
           {#
             Capacity framing, kept deliberately soft — identical constraint to the English page.
@@ -175,9 +151,9 @@ description: >-
               abweichen, und genau darum ist jede einzelne davon ein Eingabefeld und keine Konstante.
             </p>
             <p>
-              Die PATON-Kostenzahl ist ein Richtwert und steht hier, damit der Vergleich ehrlich
-              bleibt. Sie ist keine Offerte.
-              <a href="mailto:{{ site.email }}?subject=PATON%20—%20Preise">Fragen Sie uns nach einer echten.</a>
+              Diese Seite zeigt nur die verlorene Zeit, keinen PATON-Preis — den gibt es noch nicht
+              öffentlich.
+              <a href="mailto:{{ site.email }}?subject=PATON%20—%20Preise">Fragen Sie uns danach.</a>
             </p>
             <p class="note">
               Das ist ein Modell vermeidbarer Zeit, kein Versprechen freigesetzter Mittel. Behandeln
