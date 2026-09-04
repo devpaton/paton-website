@@ -5,14 +5,26 @@ eleventyExcludeFromCollections: true
 {#-
   Generated from the pages Eleventy actually built, so it can never drift from the site.
   Only directory-index URLs are listed, which excludes /404.html, this file and robots.txt.
+
+  One sitemap for both languages, not two: every URL carries the full alternate set — itself
+  included — which is the shape Google expects. German is x-default because it is the root.
+
   No <lastmod>: file timestamps in CI are checkout times, not edit times, so publishing them
   would be worse than publishing nothing.
 -#}
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset
+  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml"
+>
 {%- for item in collections.all %}
 {%- if item.url and item.url.endsWith("/") %}
-  <url><loc>{{ item.url | absoluteUrl(site.url) }}</loc></url>
+  <url>
+    <loc>{{ item.url | absoluteUrl(site.url) }}</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="{{ item.url | inLanguage("de") | absoluteUrl(site.url) }}" />
+    <xhtml:link rel="alternate" hreflang="en" href="{{ item.url | inLanguage("en") | absoluteUrl(site.url) }}" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="{{ item.url | inLanguage("de") | absoluteUrl(site.url) }}" />
+  </url>
 {%- endif %}
 {%- endfor %}
 </urlset>
