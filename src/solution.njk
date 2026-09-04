@@ -32,6 +32,7 @@ description: >-
       <article class="card">
         <p class="eyebrow" style="margin-top: 0">At the bed</p>
         <h3>The bed device</h3>
+        {% include "partials/device-art-bed.njk" %}
         <p>
           Instead of a single anonymous button, the patient chooses from a short list of the things
           patients actually ask for. Alongside it sits one unmistakable emergency action that always
@@ -47,6 +48,7 @@ description: >-
       <article class="card">
         <p class="eyebrow" style="margin-top: 0">On shift</p>
         <h3>The nurse device</h3>
+        {% include "partials/device-art-nurse.njk" %}
         <p>
           Staff on duty carry a device that lists the open requests for their ward. Each alert
           carries the room and bed, what is being asked for, how long it has been waiting, and the
@@ -116,6 +118,15 @@ description: >-
         It also means that, for the first time, the ward has data about its own call load rather
         than an impression of it.
       </p>
+
+      <figure class="figure-art">
+        {% include "partials/nurse-figure-art.njk" %}
+        <figcaption class="note">
+          On shift it is one glance: what is being asked for, which bed, and how long it has been
+          waiting.
+        </figcaption>
+      </figure>
+
       <div class="button-row" style="margin-top: 1.75rem">
         <a class="button" href="/case-study/">See it running on a real ward</a>
         <a class="button button--ghost" href="/savings-calculator/">What is that worth?</a>
