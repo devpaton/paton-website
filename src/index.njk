@@ -1,0 +1,258 @@
+---
+layout: layouts/base.njk
+permalink: /index.html
+description: >-
+  A nurse call tells a ward that someone needs something — never what. PATON replaces the
+  unspecific bell with a specific request, so the right person walks in with the right thing.
+---
+<section class="hero">
+  <div class="shell hero__inner">
+    <div>
+      <p class="eyebrow">Nurse call, rebuilt</p>
+      <h1>A bell tells you someone needs something. It never tells you <em>what</em>.</h1>
+      <p class="hero__lede">
+        PATON replaces the unspecific nurse call with a specific request. The patient says what
+        they need, the ward sees it prioritised and routed to the right qualification, and the
+        person who walks into the room already has the right thing in hand.
+      </p>
+      <div class="button-row" style="margin-top: 2rem">
+        <a class="button" href="/savings-calculator/">Estimate what this is worth</a>
+        <a class="button button--ghost" href="/solution/">See how it works</a>
+      </div>
+
+      <dl class="hero__meta">
+        <div>
+          <dt>Pilot</dt>
+          <dd>1&nbsp;000+<span class="note" style="display: block">logged call events</span></dd>
+        </div>
+        <div>
+          <dt>Measured</dt>
+          <dd>2 things<span class="note" style="display: block">qualification and walking distance</span></dd>
+        </div>
+        <div>
+          <dt>Based in</dt>
+          <dd>{{ site.city }}<span class="note" style="display: block">founded {{ site.founded }}</span></dd>
+        </div>
+      </dl>
+    </div>
+
+    <div>{% include "partials/hero-art.njk" %}</div>
+  </div>
+</section>
+
+{# ---------- 1. THE PROBLEM ---------- #}
+<section class="section section--soft" id="problem">
+  <div class="shell">
+    <div class="section-head">
+      <p class="eyebrow">The problem</p>
+      <h2>Every call is the same call.</h2>
+      <p>
+        Ask anyone who runs a ward what the nurse call actually tells them, and the answer is
+        always the same: a room number and a noise. Everything that would let the team respond
+        well — what is wrong, how urgent it is, who is qualified to deal with it, what to bring —
+        is missing, and has to be discovered by walking there.
+      </p>
+    </div>
+
+    <blockquote class="pull" style="margin-bottom: var(--gap)">
+      <p>
+        “A light goes on. Someone stops what they are doing, walks the length of the corridor,
+        finds out it is a glass of water — or finds out it is something they are not qualified to
+        handle and has to walk back for a colleague. We do that several hundred times a day and we
+        learn nothing from any of it.”
+      </p>
+      <footer>How ward leadership describes an ordinary shift. Composite, not a single attributed quote.</footer>
+    </blockquote>
+
+    <div class="grid grid--3">
+      <article class="card">
+        <span class="card__index">01</span>
+        <h3>The wrong person goes</h3>
+        <p>
+          Because nobody knows what the call is about, whoever is free responds. Sometimes that is
+          someone overqualified doing a task anyone could do. Sometimes it is someone who now has
+          to find a colleague with the right qualification, and the patient waits twice.
+        </p>
+      </article>
+      <article class="card">
+        <span class="card__index">02</span>
+        <h3>The room gets left again</h3>
+        <p>
+          Without knowing the request, staff arrive empty-handed. The equipment or the medication
+          is at the other end of the ward, so the visit turns into a round trip and the walking
+          gets counted twice.
+        </p>
+      </article>
+      <article class="card">
+        <span class="card__index">03</span>
+        <h3>The interruption lands anyway</h3>
+        <p>
+          Calls arrive in the middle of drawing up medication or working on a line — tasks where an
+          interruption is a safety risk, not an inconvenience. An accidental press still has to be
+          checked in person, because nothing distinguishes it from an emergency.
+        </p>
+      </article>
+    </div>
+
+    <p style="margin-top: 2rem">
+      <a href="/challenge/">Read the long version of the problem &rarr;</a>
+    </p>
+  </div>
+</section>
+
+{# ---------- 2. THE SOLUTION ---------- #}
+<section class="section" id="solution">
+  <div class="shell">
+    <div class="section-head">
+      <p class="eyebrow">What PATON does</p>
+      <h2>Give the call a subject line.</h2>
+      <p>
+        PATON is a smart nurse-call system. It keeps the thing that works about the old bell — a
+        patient can always reach someone, instantly — and adds the one thing it never had: what the
+        call is actually about.
+      </p>
+    </div>
+
+    <ol class="steps">
+      <li>
+        <h3>The patient asks for something specific</h3>
+        <p>
+          A device at the bed replaces the single button with a short list of the things patients
+          actually ask for, plus one unmistakable emergency action that always goes out at top
+          priority.
+        </p>
+      </li>
+      <li>
+        <h3>The request reaches the right device</h3>
+        <p>
+          Staff on shift carry a nurse device. Each request arrives as a readable alert — room, bed,
+          what is needed, how long it has been waiting — rather than a room number and a chime.
+        </p>
+      </li>
+      <li>
+        <h3>The ward sees it in order</h3>
+        <p>
+          Alerts are ordered by urgency and matched to the qualification the request needs, so an
+          emergency is never sitting behind a request for a blanket.
+        </p>
+      </li>
+      <li>
+        <h3>Every call leaves a record</h3>
+        <p>
+          Because each request has a type, a time and an outcome, a ward can finally see its own
+          call pattern — which is the part no bell has ever been able to give anyone.
+        </p>
+      </li>
+    </ol>
+
+    <div class="button-row" style="margin-top: 2.5rem">
+      <a class="button" href="/solution/">The system in detail</a>
+      <a class="button button--ghost" href="/case-study/">Where it has run</a>
+    </div>
+  </div>
+</section>
+
+{# ---------- 3. THE EVIDENCE ---------- #}
+<section class="section section--dark" id="evidence">
+  <div class="shell">
+    <div class="section-head">
+      <p class="eyebrow">Evidence</p>
+      <h2>It has already run on a real ward.</h2>
+      <p>
+        PATON was piloted at the Geriatrische Klinik St.&nbsp;Gallen. Over the pilot the system
+        logged more than a thousand real call events, and for each one it recorded the two things
+        that decide whether a response was efficient: the qualification the request needed, and how
+        far someone had to walk to answer it.
+      </p>
+    </div>
+
+    <div class="grid grid--3">
+      <div class="stat">
+        <span class="stat__value">1&nbsp;000+</span>
+        <span class="stat__label">call events logged during the pilot</span>
+      </div>
+      <div class="stat stat--word">
+        <span class="stat__value">Qualification</span>
+        <span class="stat__label">recorded for every single request</span>
+      </div>
+      <div class="stat stat--word">
+        <span class="stat__value">Walking&nbsp;distance</span>
+        <span class="stat__label">tracked per response, not estimated</span>
+      </div>
+    </div>
+
+    <div class="button-row" style="margin-top: 2.75rem">
+      <a class="button button--light" href="/case-study/">Read the pilot case study</a>
+    </div>
+  </div>
+</section>
+
+{# ---------- 4. THE MONEY ---------- #}
+<section class="section">
+  <div class="shell split">
+    <div>
+      <p class="eyebrow">The business case</p>
+      <h2>Two and a half minutes, several hundred times a day.</h2>
+      <p>
+        A ward does not lose an hour at a time. It loses two or three minutes per call — walking
+        back for equipment, finding a qualified colleague, checking a call that turned out to be
+        nothing — and it does that around eight times per patient per day.
+      </p>
+      <p>
+        Put your own bed count and your own cost assumptions in, and the calculator shows what that
+        adds up to over a year. It runs entirely in your browser: no sign-up, no email required, and
+        nothing is sent to us.
+      </p>
+      <div class="button-row" style="margin-top: 1.75rem">
+        <a class="button" href="/savings-calculator/">Open the savings calculator</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <p class="eyebrow" style="margin-top: 0">Worked example</p>
+      <h3 style="margin-bottom: 1.25rem">
+        Rehabilitation clinic, {{ calculator.defaults.beds }} beds
+      </h3>
+      <div class="grid grid--2" style="gap: 1.25rem">
+        <div class="stat" style="padding-top: 1rem">
+          <span class="stat__value" style="font-size: 1.6rem">
+            {{ (calculator.defaults.beds * (calculator.defaults.occupancy / 100) * 365 * calculator.defaults.callsPerPatientDay) | round | chf }}
+          </span>
+          <span class="stat__label">nurse calls a year</span>
+        </div>
+        <div class="stat" style="padding-top: 1rem">
+          <span class="stat__value" style="font-size: 1.6rem">
+            CHF&nbsp;{{ (calculator.defaults.beds * (calculator.defaults.occupancy / 100) * 365 * calculator.defaults.callsPerPatientDay * calculator.defaults.wastedMinutesPerCall / 60 * calculator.defaults.nursingCostPerHour) | round | chf }}
+          </span>
+          <span class="stat__label">value of the time lost around them</span>
+        </div>
+      </div>
+      <p class="note" style="margin-top: 1.5rem">
+        At {{ calculator.defaults.occupancy }}% occupancy,
+        {{ calculator.defaults.callsPerPatientDay }} calls per patient-day,
+        {{ calculator.defaults.wastedMinutesPerCall }} minutes lost per call and
+        CHF&nbsp;{{ calculator.defaults.nursingCostPerHour }} per nursing hour. A model, not a quote —
+        change any of it in the calculator.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="section section--tight">
+  <div class="shell">
+    <div class="cta">
+      <div>
+        <h2>Want to see it on your ward?</h2>
+        <p>
+          We are a small team in Zurich and we answer our own email. Tell us what your ward looks
+          like and we will tell you honestly whether PATON helps.
+        </p>
+      </div>
+      <div class="button-row">
+        <a class="button button--light" href="mailto:{{ site.email }}?subject=PATON%20—%20our%20ward">
+          {{ site.email }}
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
