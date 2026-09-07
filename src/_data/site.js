@@ -6,12 +6,12 @@ module.exports = {
   // Meta description fallback, per language.
   description: {
     de:
-      "PATON baut ein intelligentes Schwesternrufsystem, das der Station sagt, was eine " +
+      "PATON baut EC-Bell, ein intelligentes Schwesternrufsystem, das der Station sagt, was eine " +
       "Patientin oder ein Patient tatsächlich braucht — damit die richtige Person mit dem " +
       "Richtigen in der Hand ins richtige Zimmer geht.",
     en:
-      "PATON builds a smart nurse-call system that tells the ward what a patient actually needs, " +
-      "so the right person goes to the right room with the right thing in hand.",
+      "PATON builds EC-Bell, a smart nurse-call system that tells the ward what a patient actually " +
+      "needs, so the right person goes to the right room with the right thing in hand.",
   },
   url: "https://paton.ch",
   languages: ["de", "en"],
