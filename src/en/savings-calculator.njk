@@ -1,0 +1,188 @@
+---
+layout: layouts/base.njk
+permalink: /en/savings-calculator/index.html
+title: Savings calculator
+pageScript: /assets/js/calculator.js
+description: >-
+  Estimate what your ward loses around unspecific nurse calls each year. Runs entirely in your
+  browser — no sign-up, no email required, nothing sent to us.
+---
+{% macro field(key, label, hint, suffix) %}
+  {% set limit = calculator.limits[key] %}
+  <div class="field">
+    <div class="field__top">
+      <label for="f-{{ key }}">{{ label }}</label>
+      <span class="field__value" data-out="{{ key }}Value"></span>
+    </div>
+    <div class="field__row">
+      <input
+        type="range"
+        id="f-{{ key }}"
+        data-range="{{ key }}"
+        min="{{ limit.min }}"
+        max="{{ limit.max }}"
+        step="{{ limit.step }}"
+        value="{{ calculator.defaults[key] }}"
+        aria-describedby="h-{{ key }}"
+      />
+      <input
+        type="number"
+        data-number="{{ key }}"
+        min="{{ limit.min }}"
+        max="{{ limit.max }}"
+        step="{{ limit.step }}"
+        value="{{ calculator.defaults[key] }}"
+        aria-label="{{ label }} ({{ suffix }})"
+      />
+    </div>
+    <p class="field__hint" id="h-{{ key }}">{{ hint }}</p>
+  </div>
+{% endmacro %}
+
+<section class="page-head">
+  <div class="shell">
+    <p class="eyebrow">Savings calculator</p>
+    <h1>What do unspecific calls cost you a year?</h1>
+    <p class="lede">
+      Not a lead-capture form. Move the sliders and the numbers move with them. Everything runs in
+      your browser: no account, no email needed to see the result, and nothing is sent to us.
+    </p>
+  </div>
+</section>
+
+<section class="section section--tight">
+  <div class="shell" id="calculator" data-lang="{{ lang }}">
+    <script type="application/json" id="calculator-config">{{ calculator | dump | safe }}</script>
+
+    <div class="calc">
+      <div class="calc__panel">
+        <h2 style="font-size: 1.25rem; margin-bottom: 1rem">Your ward</h2>
+
+        <div class="calc__presets" role="group" aria-label="Starting points">
+          {% for preset in calculator.presets %}
+            <button
+              type="button"
+              class="calc__preset"
+              data-preset-beds="{{ preset.beds }}"
+              aria-pressed="false"
+            >{{ preset.label[lang] }} · {{ preset.beds }} beds</button>
+          {% endfor %}
+        </div>
+
+        {{ field("beds", "Beds", "How many beds the estimate covers.", "beds") }}
+        {{ field("occupancy", "Average occupancy", "Share of those beds occupied across the year.", "percent") }}
+        {{ field("callsPerPatientDay", "Nurse calls per patient-day", "Swiss hospital statistics put this at roughly 8.", "calls") }}
+        {{ field("wastedMinutesPerCall", "Minutes lost per call", "Walking back for equipment, finding a qualified colleague, checking an accidental call.", "minutes") }}
+        {{ field("nursingCostPerHour", "Nursing cost per hour (CHF)", "Fully loaded cost of an hour of nursing time, including employer costs.", "CHF per hour") }}
+      </div>
+
+      <div>
+        <div class="calc__result" aria-live="polite">
+          <dl class="calc__headline">
+            <dt>Value of nursing time currently lost, per year</dt>
+            <dd data-out="annualSaving">—</dd>
+          </dl>
+
+          <dl class="calc__breakdown">
+            <div>
+              <dt>Nurse calls a year</dt>
+              <dd data-out="calls">—</dd>
+            </div>
+            <div>
+              <dt>Occupied bed-days</dt>
+              <dd data-out="bedDays">—</dd>
+            </div>
+            <div>
+              <dt>Nursing hours lost</dt>
+              <dd data-out="hoursLost">—</dd>
+            </div>
+          </dl>
+
+          {#
+            Capacity framing, kept deliberately soft. This is minutes handed back to the ward —
+            it is NEVER to be expressed as full-time equivalents or as a headcount reduction.
+            Nursing is short-staffed; selling redundancies here would be both wrong and untrue.
+          #}
+          <p class="calc__capacity">
+            That is roughly <strong data-out="minutesPerBedPerDay">—</strong> of nursing time handed
+            back to the ward, per bed, per day. We report it as time returned to the team, never as
+            a headcount you could cut.
+          </p>
+        </div>
+
+        <div class="calc__share">
+          <h3>Want a copy?</h3>
+          <p class="note" style="margin-bottom: 1rem">
+            Optional. This opens your own email app with the figures already written out. No form is
+            submitted, no address reaches us, and nothing is stored anywhere.
+          </p>
+          <form class="calc__share-form" data-share-form novalidate>
+            <label class="visually-hidden" for="share-email">Your email address</label>
+            <input
+              type="email"
+              id="share-email"
+              name="email"
+              placeholder="you@clinic.ch"
+              autocomplete="email"
+            />
+            <button class="button" type="submit">Email me this summary</button>
+          </form>
+          <p class="calc__status" data-share-status role="status"></p>
+        </div>
+
+        <details class="calc__assumptions">
+          <summary>How the number is worked out</summary>
+          <div class="prose" style="padding-top: 0.5rem">
+            <p>Four multiplications, all of them visible as inputs above:</p>
+            <ol>
+              <li><strong>Occupied bed-days</strong> = beds × occupancy × 365</li>
+              <li><strong>Nurse calls</strong> = occupied bed-days × calls per patient-day</li>
+              <li><strong>Minutes lost</strong> = nurse calls × minutes lost per call</li>
+              <li><strong>Value</strong> = minutes lost ÷ 60 × nursing cost per hour</li>
+            </ol>
+            <p>
+              The baseline assumptions — around 8 calls per patient-day and around 2.5 minutes lost
+              per call — come from Swiss federal hospital statistics together with PATON's own
+              observation work on wards. They are averages: your ward will differ, which is exactly
+              why every one of them is an input rather than a constant.
+            </p>
+            <p>
+              This page shows the time lost, not a PATON price — there isn't a public one yet.
+              <a href="mailto:{{ site.email }}?subject=PATON%20—%20pricing">Ask us for one.</a>
+            </p>
+            <p class="note">
+              This is a model of avoidable time, not a promise of cash released. Treat it the way
+              you would treat any business case: a starting point for a conversation.
+            </p>
+          </div>
+        </details>
+      </div>
+    </div>
+
+    <noscript>
+      <p class="note" style="margin-top: 2rem">
+        The calculator needs JavaScript to recalculate. The formula is written out above, and we are
+        happy to run it with you by email: <a href="mailto:{{ site.email }}">{{ site.email }}</a>.
+      </p>
+    </noscript>
+  </div>
+</section>
+
+<section class="section section--tight">
+  <div class="shell">
+    <div class="cta">
+      <div>
+        <h2>Does the number look plausible?</h2>
+        <p>
+          Send us your inputs and we will tell you where we think the model is optimistic and where
+          it is conservative for a ward like yours.
+        </p>
+      </div>
+      <div class="button-row">
+        <a class="button button--light" href="mailto:{{ site.email }}?subject=PATON%20—%20savings%20model">
+          {{ site.email }}
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

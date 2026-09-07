@@ -1,0 +1,158 @@
+---
+layout: layouts/base.njk
+permalink: /solution/index.html
+title: Die Lösung
+description: >-
+  EC-Bell ist ein intelligentes Schwesternrufsystem: ein Gerät am Bett meldet einen konkreten
+  Bedarf oder einen Notfall, und die Pflegegeräte empfangen ihn als priorisierte, zugewiesene
+  Meldung.
+---
+<section class="page-head">
+  <div class="shell">
+    <p class="eyebrow">Die Lösung</p>
+    <h1>Dieselbe Taste. Ein weit besserer Ruf.</h1>
+    <p class="lede">
+      EC-Bell ist ein Schwesternrufsystem, das Bedeutung mitträgt. Eine Patientin erreicht die
+      Station weiterhin sofort — das ist unantastbar — aber die Station empfängt jetzt eine
+      Anfrage, mit der sie arbeiten kann, bevor jemand losgeht.
+    </p>
+
+    <figure class="page-art">
+      {% include "partials/ward-art.njk" %}
+      <figcaption class="note">
+        Eine Station, eine Anfrage: am Bett ausgelöst, gegen alles andere Offene eingeordnet und
+        mit der benötigten Qualifikation auf dem Pflegegerät zugestellt.
+      </figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="section section--tight">
+  <div class="shell">
+    <div class="grid grid--2">
+      <article class="card">
+        <p class="eyebrow" style="margin-top: 0">Am Bett</p>
+        <h3>Das Bettgerät</h3>
+        {% include "partials/device-art-bed.njk" %}
+        <p>
+          Statt einer einzelnen anonymen Taste wählt die Patientin aus einer kurzen Liste dessen,
+          wonach Patientinnen und Patienten tatsächlich fragen. Daneben steht eine unverwechselbare
+          Notfallauslösung, die immer mit höchster Priorität hinausgeht, ohne Menü dazwischen.
+        </p>
+        <ul style="margin-top: 1.25rem; color: var(--ink-2)">
+          <li>Ein konkreter Bedarf, keine allgemeine Meldung</li>
+          <li>Eine separate Notfallauslösung, die nie hinter etwas anderem wartet</li>
+          <li>Bewusst wenige Auswahlmöglichkeiten, damit es auch bei Unwohlsein bedienbar bleibt</li>
+        </ul>
+      </article>
+
+      <article class="card">
+        <p class="eyebrow" style="margin-top: 0">Im Dienst</p>
+        <h3>Das Pflegegerät</h3>
+        {% include "partials/device-art-nurse.njk" %}
+        <p>
+          Das Personal im Dienst trägt ein Gerät, das die offenen Anfragen der Station auflistet.
+          Jede Meldung trägt Zimmer und Bett, worum gebeten wird, wie lange sie schon wartet und
+          welche Qualifikation die Anfrage verlangt.
+        </p>
+        <ul style="margin-top: 1.25rem; color: var(--ink-2)">
+          <li>Notfälle zuerst, danach nach Wartezeit</li>
+          <li>Anfragen der Qualifikation zugeordnet, die sie lösen kann</li>
+          <li>Genug Information, um mit dem Richtigen in der Hand anzukommen</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section section--soft">
+  <div class="shell">
+    <div class="section-head">
+      <p class="eyebrow">Der Ablauf</p>
+      <h2>Vom Tastendruck bis zur Erledigung</h2>
+    </div>
+    <ol class="steps steps--illustrated">
+      <li>
+        {% include "partials/step-icon-raised.njk" %}
+        <h3>Ausgelöst</h3>
+        <p>Die Patientin wählt einen Bedarf oder löst einen Notfall aus. Beides verlässt das Bett sofort.</p>
+      </li>
+      <li>
+        {% include "partials/step-icon-prioritised.njk" %}
+        <h3>Priorisiert</h3>
+        <p>
+          Die Anfrage wird gegen alles andere eingeordnet, was auf der Station offen ist — Notfälle
+          immer zuoberst.
+        </p>
+      </li>
+      <li>
+        {% include "partials/step-icon-routed.njk" %}
+        <h3>Zugewiesen</h3>
+        <p>
+          Sie erreicht die Pflegegeräte im Dienst, gekennzeichnet mit der benötigten Qualifikation,
+          damit sie bei jemandem landet, der sie abschliessen kann.
+        </p>
+      </li>
+      <li>
+        {% include "partials/step-icon-recorded.njk" %}
+        <h3>Protokolliert</h3>
+        <p>
+          Art, Zeit und Ergebnis werden festgehalten. Über einige Wochen wird daraus ein ehrliches
+          Bild dessen, worum eine Station tatsächlich gebeten wird.
+        </p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<section class="section">
+  <div class="shell split">
+    <div>
+      <p class="eyebrow">Was sich ändert</p>
+      <h2>Weniger unnötige Wege, weniger Besuche der falschen Person, weniger sinnlose Unterbrechungen.</h2>
+      <p>
+        Nichts davon ist exotisch. Es ist der Unterschied zwischen «jemand in 209 braucht etwas» und
+        «Bett 1 in 209 braucht ein Schmerzmittel und wartet seit anderthalb Minuten» — und in diesem
+        Unterschied stecken die verlorenen Minuten einer Station.
+      </p>
+      <p>
+        Es bedeutet ausserdem, dass die Station zum ersten Mal Daten über ihr eigenes Rufaufkommen
+        hat statt eines Eindrucks davon.
+      </p>
+
+      <figure class="figure-art">
+        {% include "partials/nurse-figure-art.njk" %}
+        <figcaption class="note">
+          Im Dienst ist es ein Blick: worum gebeten wird, welches Bett, und wie lange es schon
+          wartet.
+        </figcaption>
+      </figure>
+
+      <div class="button-row" style="margin-top: 1.75rem">
+        <a class="button" href="/case-study/">Auf einer echten Station im Einsatz sehen</a>
+        <a class="button button--ghost" href="/savings-calculator/">Was ist das wert?</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Was wir nicht behaupten</h3>
+      <p>
+        EC-Bell stellt keine Diagnosen, trifft keine klinischen Entscheidungen und ersetzt niemandes
+        fachliches Urteil. Es leitet Anfragen weiter und führt ein Protokoll. Alles auf dieser
+        Website, das ein Modell und keine Messung ist, ist als solches gekennzeichnet.
+      </p>
+      {#
+        Legally load-bearing sentence — a deliberately literal translation of the approved English
+        one on src/en/solution.njk. EC-Bell is never described as certified or compliant without
+        the qualifier attached, and nothing here classifies it as a Medizinprodukt. Do not reword
+        either version without the other, and not without a legal review.
+      #}
+      <p class="note" style="margin-top: 1rem">
+        Wir haben EC-Bell intern anhand der DIN VDE 0834 geprüft, der Norm für Rufanlagen; diese
+        Arbeit läuft noch, nichts davon wurde von irgendjemandem zertifiziert, und EC-Bell ist
+        darauf ausgelegt, neben dem bestehenden zertifizierten Schwesternrufsystem einer Station zu
+        laufen statt es zu ersetzen.
+      </p>
+    </div>
+  </div>
+</section>

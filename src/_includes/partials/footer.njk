@@ -1,0 +1,42 @@
+{%- set t = ui[lang] -%}
+<footer class="site-footer">
+  <div class="shell site-footer__inner">
+    <div class="site-footer__brand">
+      <a href="{{ '/' | inLanguage(lang) }}" aria-label="{{ t.homeAria }}">{% include "partials/logo.njk" %}</a>
+      <p class="site-footer__blurb">{{ site.description[lang] }}</p>
+      <p class="site-footer__place">{{ site.city[lang] }}, {{ site.country[lang] }}</p>
+    </div>
+
+    <div class="site-footer__cols">
+      <div>
+        <h2 class="site-footer__heading">{{ t.footerSite }}</h2>
+        <ul>
+          {% for item in t.nav %}
+            <li><a href="{{ item.url }}">{{ item.text }}</a></li>
+          {% endfor %}
+        </ul>
+      </div>
+      <div>
+        <h2 class="site-footer__heading">{{ t.footerLegal }}</h2>
+        <ul>
+          {% for item in t.legalNav %}
+            <li><a href="{{ item.url }}">{{ item.text }}</a></li>
+          {% endfor %}
+        </ul>
+      </div>
+      <div>
+        <h2 class="site-footer__heading">{{ t.footerContact }}</h2>
+        <ul>
+          <li><a href="mailto:{{ site.email }}">{{ site.email }}</a></li>
+          <li><a href="{{ site.social.linkedin }}" rel="noopener">LinkedIn</a></li>
+          <li><a href="{{ site.social.twitter }}" rel="noopener">X / Twitter</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="shell site-footer__legal">
+    <p>&copy; {{ site.founded }}–{{ buildYear }} {{ t.rightsReserved }}</p>
+    <p>{{ t.noCookies }}</p>
+  </div>
+</footer>

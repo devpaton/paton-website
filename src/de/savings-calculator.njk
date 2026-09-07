@@ -1,0 +1,194 @@
+---
+layout: layouts/base.njk
+permalink: /savings-calculator/index.html
+title: Einsparrechner
+pageScript: /assets/js/calculator.js
+description: >-
+  Schätzen Sie, was Ihre Station rund um unspezifische Schwesternrufe pro Jahr verliert. Läuft
+  vollständig in Ihrem Browser — keine Anmeldung, keine E-Mail-Adresse nötig, nichts wird an uns
+  gesendet.
+---
+{% macro field(key, label, hint, suffix) %}
+  {% set limit = calculator.limits[key] %}
+  <div class="field">
+    <div class="field__top">
+      <label for="f-{{ key }}">{{ label }}</label>
+      <span class="field__value" data-out="{{ key }}Value"></span>
+    </div>
+    <div class="field__row">
+      <input
+        type="range"
+        id="f-{{ key }}"
+        data-range="{{ key }}"
+        min="{{ limit.min }}"
+        max="{{ limit.max }}"
+        step="{{ limit.step }}"
+        value="{{ calculator.defaults[key] }}"
+        aria-describedby="h-{{ key }}"
+      />
+      <input
+        type="number"
+        data-number="{{ key }}"
+        min="{{ limit.min }}"
+        max="{{ limit.max }}"
+        step="{{ limit.step }}"
+        value="{{ calculator.defaults[key] }}"
+        aria-label="{{ label }} ({{ suffix }})"
+      />
+    </div>
+    <p class="field__hint" id="h-{{ key }}">{{ hint }}</p>
+  </div>
+{% endmacro %}
+
+<section class="page-head">
+  <div class="shell">
+    <p class="eyebrow">Einsparrechner</p>
+    <h1>Was kosten Sie unspezifische Rufe pro Jahr?</h1>
+    <p class="lede">
+      Kein Formular zur Adressgewinnung. Bewegen Sie die Regler, und die Zahlen bewegen sich mit.
+      Alles läuft in Ihrem Browser: kein Konto, keine E-Mail-Adresse nötig, um das Ergebnis zu
+      sehen, und nichts wird an uns gesendet.
+    </p>
+  </div>
+</section>
+
+<section class="section section--tight">
+  <div class="shell" id="calculator" data-lang="{{ lang }}">
+    <script type="application/json" id="calculator-config">{{ calculator | dump | safe }}</script>
+
+    <div class="calc">
+      <div class="calc__panel">
+        <h2 style="font-size: 1.25rem; margin-bottom: 1rem">Ihre Station</h2>
+
+        <div class="calc__presets" role="group" aria-label="Ausgangspunkte">
+          {% for preset in calculator.presets %}
+            <button
+              type="button"
+              class="calc__preset"
+              data-preset-beds="{{ preset.beds }}"
+              aria-pressed="false"
+            >{{ preset.label[lang] }} · {{ preset.beds }} Betten</button>
+          {% endfor %}
+        </div>
+
+        {{ field("beds", "Betten", "Wie viele Betten die Schätzung abdeckt.", "Betten") }}
+        {{ field("occupancy", "Durchschnittliche Auslastung", "Anteil dieser Betten, der über das Jahr belegt ist.", "Prozent") }}
+        {{ field("callsPerPatientDay", "Schwesternrufe pro Patiententag", "Die Schweizer Spitalstatistik legt das bei rund 8.", "Rufe") }}
+        {{ field("wastedMinutesPerCall", "Verlorene Minuten pro Ruf", "Zurücklaufen für ein Hilfsmittel, eine qualifizierte Kollegin suchen, einen versehentlichen Ruf prüfen.", "Minuten") }}
+        {{ field("nursingCostPerHour", "Pflegekosten pro Stunde (CHF)", "Vollkosten einer Pflegestunde, inklusive Arbeitgeberbeiträge.", "CHF pro Stunde") }}
+      </div>
+
+      <div>
+        <div class="calc__result" aria-live="polite">
+          <dl class="calc__headline">
+            <dt>Wert der Pflegezeit, die heute pro Jahr verloren geht</dt>
+            <dd data-out="annualSaving">—</dd>
+          </dl>
+
+          <dl class="calc__breakdown">
+            <div>
+              <dt>Schwesternrufe pro Jahr</dt>
+              <dd data-out="calls">—</dd>
+            </div>
+            <div>
+              <dt>Belegte Pflegetage</dt>
+              <dd data-out="bedDays">—</dd>
+            </div>
+            <div>
+              <dt>Verlorene Pflegestunden</dt>
+              <dd data-out="hoursLost">—</dd>
+            </div>
+          </dl>
+
+          {#
+            Capacity framing, kept deliberately soft — identical constraint to the English page.
+            This is time handed back to the ward. It is NEVER to be expressed as Vollzeitäquivalente,
+            as a Stellenabbau, or as any other headcount reduction. Nursing is short-staffed;
+            selling redundancies here would be both wrong and untrue.
+          #}
+          <p class="calc__capacity">
+            Das sind rund <strong data-out="minutesPerBedPerDay">—</strong> Pflegezeit, die der
+            Station pro Bett und Tag zurückgegeben wird. Wir weisen das als Zeit aus, die dem Team
+            zurückgegeben wird — nie als Stellen, die Sie abbauen könnten.
+          </p>
+        </div>
+
+        <div class="calc__share">
+          <h3>Möchten Sie eine Kopie?</h3>
+          <p class="note" style="margin-bottom: 1rem">
+            Optional. Das öffnet Ihr eigenes E-Mail-Programm mit den bereits eingetragenen Zahlen.
+            Es wird kein Formular abgeschickt, keine Adresse erreicht uns, und nichts wird irgendwo
+            gespeichert.
+          </p>
+          <form class="calc__share-form" data-share-form novalidate>
+            <label class="visually-hidden" for="share-email">Ihre E-Mail-Adresse</label>
+            <input
+              type="email"
+              id="share-email"
+              name="email"
+              placeholder="sie@klinik.ch"
+              autocomplete="email"
+            />
+            <button class="button" type="submit">Zusammenfassung an mich mailen</button>
+          </form>
+          <p class="calc__status" data-share-status role="status"></p>
+        </div>
+
+        <details class="calc__assumptions">
+          <summary>Wie die Zahl zustande kommt</summary>
+          <div class="prose" style="padding-top: 0.5rem">
+            <p>Vier Multiplikationen, alle als Eingabefeld oben sichtbar:</p>
+            <ol>
+              <li><strong>Belegte Pflegetage</strong> = Betten × Auslastung × 365</li>
+              <li><strong>Schwesternrufe</strong> = belegte Pflegetage × Rufe pro Patiententag</li>
+              <li><strong>Verlorene Minuten</strong> = Schwesternrufe × verlorene Minuten pro Ruf</li>
+              <li><strong>Wert</strong> = verlorene Minuten ÷ 60 × Pflegekosten pro Stunde</li>
+            </ol>
+            <p>
+              Die Ausgangsannahmen — rund 8 Rufe pro Patiententag und rund 2,5 verlorene Minuten pro
+              Ruf — stammen aus der Schweizer Spitalstatistik des Bundes zusammen mit PATONs eigener
+              Beobachtungsarbeit auf Stationen. Es sind Durchschnitte: Ihre Station wird davon
+              abweichen, und genau darum ist jede einzelne davon ein Eingabefeld und keine Konstante.
+            </p>
+            <p>
+              Diese Seite zeigt nur die verlorene Zeit, keinen PATON-Preis — den gibt es noch nicht
+              öffentlich.
+              <a href="mailto:{{ site.email }}?subject=PATON%20—%20Preise">Fragen Sie uns danach.</a>
+            </p>
+            <p class="note">
+              Das ist ein Modell vermeidbarer Zeit, kein Versprechen freigesetzter Mittel. Behandeln
+              Sie es wie jeden Business Case: als Ausgangspunkt für ein Gespräch.
+            </p>
+          </div>
+        </details>
+      </div>
+    </div>
+
+    <noscript>
+      <p class="note" style="margin-top: 2rem">
+        Der Rechner braucht JavaScript, um neu zu rechnen. Die Formel steht oben ausgeschrieben, und
+        wir rechnen sie gerne per E-Mail mit Ihnen durch:
+        <a href="mailto:{{ site.email }}">{{ site.email }}</a>.
+      </p>
+    </noscript>
+  </div>
+</section>
+
+<section class="section section--tight">
+  <div class="shell">
+    <div class="cta">
+      <div>
+        <h2>Wirkt die Zahl plausibel?</h2>
+        <p>
+          Schicken Sie uns Ihre Eingaben, und wir sagen Ihnen, wo das Modell für eine Station wie
+          Ihre unseres Erachtens optimistisch und wo es konservativ ist.
+        </p>
+      </div>
+      <div class="button-row">
+        <a class="button button--light" href="mailto:{{ site.email }}?subject=PATON%20—%20Einsparmodell">
+          {{ site.email }}
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

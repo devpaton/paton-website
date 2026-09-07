@@ -1,0 +1,105 @@
+{%- set a = art[lang] -%}
+{#
+  Wider companion to hero-art.njk: a strip of beds on one ward, one of them raising a request,
+  and the nurse device receiving it in its place in the queue — under the emergency, above the
+  older assist. Same devices and same palette as the hero, drawn rather than photographed.
+#}
+<svg
+  class="ward-art"
+  viewBox="0 0 1040 430"
+  role="img"
+  aria-label="{{ a.wardAria }}"
+  focusable="false"
+>
+  <defs>
+    <style>
+      .wa-frame { fill: #faf7f6; stroke: #f0e9e7; }
+      .wa-bed { fill: #ffffff; stroke: #f0e9e7; }
+      .wa-panel { fill: #ffffff; stroke: #ece5e3; }
+      .wa-row { fill: #faf7f6; stroke: #f0e9e7; }
+      .wa-row--new { fill: #fdf3ee; stroke: #f4dbca; }
+      .wa-title { font: 700 15px Manrope, system-ui, sans-serif; fill: #1c1315; }
+      .wa-meta { font: 500 12.5px Manrope, system-ui, sans-serif; fill: #5f5052; }
+      .wa-eyebrow { font: 700 11.5px Manrope, system-ui, sans-serif; fill: #8a7b7d; letter-spacing: 1.5px; }
+      .wa-need { font: 700 18px Manrope, system-ui, sans-serif; fill: #ffffff; }
+      /* CSS wins over a fill attribute in SVG, so the on-maroon variants need their own rules. */
+      .wa-eyebrow--light { fill: #e6c3bb; }
+      .wa-meta--light { fill: #dcbdb9; }
+      .wa-tag { font: 700 11px Manrope, system-ui, sans-serif; }
+    </style>
+  </defs>
+
+  <!-- the ward: three beds, two of them quiet -->
+  <rect class="wa-frame" x="8" y="56" width="430" height="344" rx="26" stroke-width="1.5" />
+  <text class="wa-eyebrow" x="36" y="88">{{ a.ward }}</text>
+  <line x1="36" y1="104" x2="410" y2="104" stroke="#f0e9e7" stroke-width="1.5" />
+
+  <g>
+    <rect class="wa-bed" x="36" y="118" width="374" height="68" rx="16" stroke-width="1.5" />
+    <rect x="54" y="140" width="4" height="24" rx="2" fill="#ddd2cf" />
+    <text class="wa-title" x="72" y="148">{{ a.room }} 208 · {{ a.bed }} 1</text>
+    <text class="wa-meta" x="72" y="170">{{ a.nothingOpen }}</text>
+  </g>
+
+  <g>
+    <rect class="wa-bed" x="36" y="198" width="374" height="68" rx="16" stroke-width="1.5" />
+    <rect x="54" y="220" width="4" height="24" rx="2" fill="#ddd2cf" />
+    <text class="wa-title" x="72" y="228">{{ a.room }} 211 · {{ a.bed }} 3</text>
+    <text class="wa-meta" x="72" y="250">{{ a.nothingOpen }}</text>
+  </g>
+
+  <!-- the bed raising the request -->
+  <g>
+    <rect x="36" y="286" width="374" height="88" rx="18" fill="#7a0a1c" />
+    <polygon points="388,312 382,302 370,302 364,312 370,322 382,322" fill="#e77e4e" />
+    <text class="wa-eyebrow wa-eyebrow--light" x="60" y="316">{{ a.bedDevice }}</text>
+    <text class="wa-need" x="60" y="343">{{ a.painRelief }}</text>
+    <text class="wa-meta wa-meta--light" x="60" y="364">{{ a.room }} 209 · {{ a.bed }} 1</text>
+  </g>
+
+  <!-- the request travelling to the ward's nurse devices -->
+  <text class="wa-eyebrow" x="499" y="200" text-anchor="middle">{{ a.routed }}</text>
+  <path
+    d="M418 330 C 486 330, 498 246, 552 238"
+    fill="none"
+    stroke="#e77e4e"
+    stroke-width="2"
+    stroke-dasharray="6 7"
+    stroke-linecap="round"
+  />
+  <circle cx="552" cy="238" r="5" fill="#e77e4e" />
+
+  <!-- nurse device -->
+  <rect class="wa-panel" x="560" y="30" width="470" height="372" rx="28" stroke-width="1.5" />
+  <text class="wa-eyebrow" x="584" y="74">{{ a.nurseDeviceWard }}</text>
+  <line x1="584" y1="92" x2="1006" y2="92" stroke="#f0e9e7" stroke-width="1.5" />
+
+  <g>
+    <rect class="wa-row" x="580" y="110" width="430" height="76" rx="16" stroke-width="1.5" />
+    <rect x="598" y="126" width="4" height="44" rx="2" fill="#b7142c" />
+    <text class="wa-title" x="616" y="144">{{ a.emergency }}</text>
+    <text class="wa-meta" x="616" y="166">{{ a.room }} 214 · {{ a.bed }} 2 · 0:41</text>
+    <rect x="930" y="136" width="62" height="24" rx="12" fill="#fdeceb" />
+    <text class="wa-tag" x="961" y="152" text-anchor="middle" fill="#b7142c">{{ a.tagNow }}</text>
+  </g>
+
+  <g>
+    <rect class="wa-row wa-row--new" x="580" y="200" width="430" height="76" rx="16" stroke-width="1.5" />
+    <rect x="598" y="216" width="4" height="44" rx="2" fill="#e77e4e" />
+    <text class="wa-title" x="616" y="234">{{ a.painRelief }}</text>
+    <text class="wa-meta" x="616" y="256">{{ a.room }} 209 · {{ a.bed }} 1 · 0:04</text>
+    <rect x="930" y="226" width="62" height="24" rx="12" fill="#ffffff" />
+    <text class="wa-tag" x="961" y="242" text-anchor="middle" fill="#d9622f">{{ a.tagNurse }}</text>
+  </g>
+
+  <g>
+    <rect class="wa-row" x="580" y="290" width="430" height="76" rx="16" stroke-width="1.5" />
+    <rect x="598" y="306" width="4" height="44" rx="2" fill="#7a0a1c" />
+    <text class="wa-title" x="616" y="324">{{ a.bathroom }}</text>
+    <text class="wa-meta" x="616" y="346">{{ a.room }} 211 · {{ a.bed }} 3 · 3:05</text>
+    <rect x="930" y="316" width="62" height="24" rx="12" fill="#f7eded" />
+    <text class="wa-tag" x="961" y="332" text-anchor="middle" fill="#7a0a1c">{{ a.tagAssist }}</text>
+  </g>
+
+  <text class="wa-meta" x="584" y="390">{{ a.wardFoot }}</text>
+</svg>

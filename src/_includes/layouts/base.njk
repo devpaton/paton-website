@@ -1,0 +1,43 @@
+{%- set t = ui[lang] -%}
+{%- set dePath = page.url | inLanguage("de") -%}
+{%- set enPath = page.url | inLanguage("en") -%}
+<!doctype html>
+<html lang="{{ t.htmlLang }}">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{% if title %}{{ title }} — {{ site.name }}{% else %}{{ site.name }} — {{ site.tagline }}{% endif %}</title>
+    <meta name="description" content="{{ description or site.description[lang] }}" />
+    <link rel="canonical" href="{{ page.url | absoluteUrl(site.url) }}" />
+    {#
+      German is the default language and sits at the root; English mirrors it under /en/.
+      x-default points at German for the same reason.
+    #}
+    <link rel="alternate" hreflang="de" href="{{ dePath | absoluteUrl(site.url) }}" />
+    <link rel="alternate" hreflang="en" href="{{ enPath | absoluteUrl(site.url) }}" />
+    <link rel="alternate" hreflang="x-default" href="{{ dePath | absoluteUrl(site.url) }}" />
+    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="{{ site.name }}" />
+    <meta property="og:locale" content="{% if lang == 'de' %}de_CH{% else %}en_GB{% endif %}" />
+    <meta property="og:title" content="{% if title %}{{ title }} — {{ site.name }}{% else %}{{ site.name }} — {{ site.tagline }}{% endif %}" />
+    <meta property="og:description" content="{{ description or site.description[lang] }}" />
+    <meta property="og:url" content="{{ page.url | absoluteUrl(site.url) }}" />
+    <meta name="twitter:card" content="summary" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap"
+    />
+    <link rel="stylesheet" href="/assets/css/site.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">{{ t.skipToContent }}</a>
+    {% include "partials/header.njk" %}
+    <main id="main">{{ content | safe }}</main>
+    {% include "partials/footer.njk" %}
+    <script src="/assets/js/nav.js" defer></script>
+    {% if pageScript %}<script src="{{ pageScript }}" defer></script>{% endif %}
+  </body>
+</html>

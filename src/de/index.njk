@@ -1,0 +1,263 @@
+---
+layout: layouts/base.njk
+permalink: /index.html
+description: >-
+  Ein Schwesternruf sagt der Station, dass jemand etwas braucht — nie was. EC-Bell ersetzt die
+  unspezifische Klingel durch eine konkrete Anfrage, damit die richtige Person mit dem Richtigen
+  in der Hand ins Zimmer kommt.
+---
+<section class="hero">
+  <div class="shell hero__inner">
+    <div>
+      <p class="eyebrow">Schwesternruf, neu gedacht</p>
+      <h1>Eine Klingel sagt Ihnen, dass jemand etwas braucht. Sie sagt Ihnen nie, <em>was</em>.</h1>
+      <p class="hero__lede">
+        EC-Bell ersetzt den unspezifischen Schwesternruf durch eine konkrete Anfrage. Patientinnen
+        und Patienten sagen, was sie brauchen, die Station sieht die Anfrage priorisiert und der
+        passenden Qualifikation zugewiesen — und wer ins Zimmer geht, hat das Richtige bereits
+        dabei.
+      </p>
+      <div class="button-row" style="margin-top: 2rem">
+        <a class="button" href="/savings-calculator/">Berechnen, was das wert ist</a>
+        <a class="button button--ghost" href="/solution/">So funktioniert es</a>
+      </div>
+
+      <dl class="hero__meta">
+        <div>
+          <dt>Pilot</dt>
+          <dd>1&nbsp;000+<span class="note" style="display: block">erfasste Rufereignisse</span></dd>
+        </div>
+        <div>
+          <dt>Gemessen</dt>
+          <dd>2 Dinge<span class="note" style="display: block">Qualifikation und Laufweg</span></dd>
+        </div>
+        <div>
+          <dt>Standort</dt>
+          <dd>{{ site.city[lang] }}<span class="note" style="display: block">gegründet {{ site.founded }}</span></dd>
+        </div>
+      </dl>
+    </div>
+
+    <div>{% include "partials/hero-art.njk" %}</div>
+  </div>
+</section>
+
+{# ---------- 1. DAS PROBLEM ---------- #}
+<section class="section section--soft" id="problem">
+  <div class="shell">
+    <div class="section-head">
+      <p class="eyebrow">Das Problem</p>
+      <h2>Jeder Ruf ist derselbe Ruf.</h2>
+      <p>
+        Fragen Sie jemanden, der eine Station führt, was der Schwesternruf eigentlich mitteilt, und
+        die Antwort ist immer dieselbe: eine Zimmernummer und ein Geräusch. Alles, was dem Team
+        eine gute Reaktion ermöglichen würde — worum es geht, wie dringend es ist, wer dafür
+        qualifiziert ist, was mitzunehmen wäre — fehlt und muss zu Fuss herausgefunden werden.
+      </p>
+    </div>
+
+    <blockquote class="pull" style="margin-bottom: var(--gap)">
+      <p>
+        «Ein Licht geht an. Jemand unterbricht, was er gerade tut, läuft den Gang entlang und stellt
+        fest, dass es um ein Glas Wasser geht — oder dass es etwas ist, wofür er nicht qualifiziert
+        ist, und muss zurücklaufen, um eine Kollegin zu holen. Das passiert mehrere hundert Mal am
+        Tag, und wir lernen daraus nichts.»
+      </p>
+      <footer>So beschreibt eine Stationsleitung eine gewöhnliche Schicht. Zusammengesetzt, kein einzelnes zugeschriebenes Zitat.</footer>
+    </blockquote>
+
+    <div class="grid grid--3">
+      <article class="card">
+        <span class="card__index">01</span>
+        <h3>Die falsche Person geht hin</h3>
+        <p>
+          Weil niemand weiss, worum es geht, geht, wer gerade frei ist. Manchmal ist das eine
+          überqualifizierte Person für eine Aufgabe, die jede hätte erledigen können. Manchmal ist
+          es eine Person, die nun jemanden mit der passenden Qualifikation suchen muss — und die
+          Patientin wartet zweimal.
+        </p>
+      </article>
+      <article class="card">
+        <span class="card__index">02</span>
+        <h3>Das Zimmer wird wieder verlassen</h3>
+        <p>
+          Ohne die Anfrage zu kennen, kommt das Personal mit leeren Händen an. Das Hilfsmittel oder
+          das Medikament liegt am anderen Ende der Station, der Besuch wird zum Hin und Zurück, und
+          der Laufweg zählt doppelt.
+        </p>
+      </article>
+      <article class="card">
+        <span class="card__index">03</span>
+        <h3>Die Unterbrechung kommt trotzdem</h3>
+        <p>
+          Rufe treffen mitten beim Aufziehen von Medikamenten oder beim Arbeiten an einem Zugang
+          ein — Tätigkeiten, bei denen eine Unterbrechung ein Sicherheitsrisiko ist und keine
+          Unannehmlichkeit. Auch ein versehentlicher Druck muss persönlich geprüft werden, weil ihn
+          nichts von einem Notfall unterscheidet.
+        </p>
+      </article>
+    </div>
+
+    <p style="margin-top: 2rem">
+      <a href="/challenge/">Die ausführliche Fassung des Problems lesen &rarr;</a>
+    </p>
+  </div>
+</section>
+
+{# ---------- 2. DIE LÖSUNG ---------- #}
+<section class="section" id="solution">
+  <div class="shell">
+    <div class="section-head">
+      <p class="eyebrow">Was EC-Bell macht</p>
+      <h2>Geben Sie dem Ruf einen Betreff.</h2>
+      <p>
+        EC-Bell ist ein intelligentes Schwesternrufsystem. Es behält, was an der alten Klingel
+        funktioniert — dass eine Patientin jederzeit sofort jemanden erreicht — und ergänzt das
+        Einzige, was ihr immer gefehlt hat: worum es überhaupt geht.
+      </p>
+    </div>
+
+    <ol class="steps">
+      <li>
+        <h3>Die Patientin fragt nach etwas Konkretem</h3>
+        <p>
+          Ein Gerät am Bett ersetzt die einzelne Taste durch eine kurze Liste dessen, wonach
+          Patientinnen und Patienten tatsächlich fragen — dazu eine unverwechselbare
+          Notfallauslösung, die immer mit höchster Priorität hinausgeht.
+        </p>
+      </li>
+      <li>
+        <h3>Die Anfrage erreicht das richtige Gerät</h3>
+        <p>
+          Das Personal im Dienst trägt ein Pflegegerät. Jede Anfrage kommt als lesbare Meldung an —
+          Zimmer, Bett, was gebraucht wird, wie lange es schon wartet — statt als Zimmernummer und
+          Signalton.
+        </p>
+      </li>
+      <li>
+        <h3>Die Station sieht sie in der richtigen Reihenfolge</h3>
+        <p>
+          Meldungen werden nach Dringlichkeit geordnet und der Qualifikation zugeordnet, die die
+          Anfrage braucht. So steht ein Notfall nie hinter der Bitte um eine Decke.
+        </p>
+      </li>
+      <li>
+        <h3>Jeder Ruf hinterlässt einen Eintrag</h3>
+        <p>
+          Weil jede Anfrage eine Art, eine Zeit und ein Ergebnis hat, sieht eine Station endlich
+          ihr eigenes Rufmuster — genau der Teil, den keine Klingel je liefern konnte.
+        </p>
+      </li>
+    </ol>
+
+    <div class="button-row" style="margin-top: 2.5rem">
+      <a class="button" href="/solution/">Das System im Detail</a>
+      <a class="button button--ghost" href="/case-study/">Wo es gelaufen ist</a>
+    </div>
+  </div>
+</section>
+
+{# ---------- 3. DIE EVIDENZ ---------- #}
+<section class="section section--dark" id="evidence">
+  <div class="shell">
+    <div class="section-head">
+      <p class="eyebrow">Evidenz</p>
+      <h2>Es lief bereits auf einer echten Station.</h2>
+      <p>
+        EC-Bell wurde in der Geriatrischen Klinik St.&nbsp;Gallen pilotiert. Über den Pilot hinweg hat
+        das System mehr als tausend echte Rufereignisse erfasst und zu jedem die zwei Dinge
+        festgehalten, die darüber entscheiden, ob eine Reaktion effizient war: die benötigte
+        Qualifikation und den Laufweg bis zur Beantwortung.
+      </p>
+    </div>
+
+    <div class="grid grid--3">
+      <div class="stat">
+        <span class="stat__value">1&nbsp;000+</span>
+        <span class="stat__label">im Pilot erfasste Rufereignisse</span>
+      </div>
+      <div class="stat stat--word">
+        <span class="stat__value">Qualifikation</span>
+        <span class="stat__label">bei jeder einzelnen Anfrage erfasst</span>
+      </div>
+      <div class="stat stat--word">
+        <span class="stat__value">Laufweg</span>
+        <span class="stat__label">pro Reaktion erfasst, nicht geschätzt</span>
+      </div>
+    </div>
+
+    <div class="button-row" style="margin-top: 2.75rem">
+      <a class="button button--light" href="/case-study/">Die Fallstudie zum Pilot lesen</a>
+    </div>
+  </div>
+</section>
+
+{# ---------- 4. DAS GELD ---------- #}
+<section class="section">
+  <div class="shell split">
+    <div>
+      <p class="eyebrow">Der Business Case</p>
+      <h2>Zweieinhalb Minuten, mehrere hundert Mal am Tag.</h2>
+      <p>
+        Eine Station verliert nicht eine Stunde am Stück. Sie verliert zwei bis drei Minuten pro
+        Ruf — zurücklaufen für ein Hilfsmittel, eine qualifizierte Kollegin suchen, einen Ruf
+        prüfen, der sich als nichts herausstellt — und das rund achtmal pro Patient und Tag.
+      </p>
+      <p>
+        Geben Sie Ihre eigene Bettenzahl und Ihre eigenen Annahmen ein, und der Rechner zeigt, was
+        sich daraus über ein Jahr ergibt. Er läuft vollständig in Ihrem Browser: keine Anmeldung,
+        keine E-Mail-Adresse nötig, und nichts wird an uns gesendet.
+      </p>
+      <div class="button-row" style="margin-top: 1.75rem">
+        <a class="button" href="/savings-calculator/">Zum Einsparrechner</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <p class="eyebrow" style="margin-top: 0">Rechenbeispiel</p>
+      <h3 style="margin-bottom: 1.25rem">
+        Rehaklinik, {{ calculator.defaults.beds }} Betten
+      </h3>
+      <div class="grid grid--2" style="gap: 1.25rem">
+        <div class="stat" style="padding-top: 1rem">
+          <span class="stat__value" style="font-size: 1.6rem">
+            {{ (calculator.defaults.beds * (calculator.defaults.occupancy / 100) * 365 * calculator.defaults.callsPerPatientDay) | round | chf }}
+          </span>
+          <span class="stat__label">Schwesternrufe pro Jahr</span>
+        </div>
+        <div class="stat" style="padding-top: 1rem">
+          <span class="stat__value" style="font-size: 1.6rem">
+            CHF&nbsp;{{ (calculator.defaults.beds * (calculator.defaults.occupancy / 100) * 365 * calculator.defaults.callsPerPatientDay * calculator.defaults.wastedMinutesPerCall / 60 * calculator.defaults.nursingCostPerHour) | round | chf }}
+          </span>
+          <span class="stat__label">Wert der Zeit, die dabei verloren geht</span>
+        </div>
+      </div>
+      <p class="note" style="margin-top: 1.5rem">
+        Bei {{ calculator.defaults.occupancy }}% Auslastung,
+        {{ calculator.defaults.callsPerPatientDay }} Rufen pro Patiententag,
+        {{ calculator.defaults.wastedMinutesPerCall }} verlorenen Minuten pro Ruf und
+        CHF&nbsp;{{ calculator.defaults.nursingCostPerHour }} pro Pflegestunde. Ein Modell, keine
+        Offerte — ändern Sie jeden dieser Werte im Rechner.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="section section--tight">
+  <div class="shell">
+    <div class="cta">
+      <div>
+        <h2>Möchten Sie es auf Ihrer Station sehen?</h2>
+        <p>
+          Wir sind ein kleines Team in Zürich und beantworten unsere E-Mails selbst. Erzählen Sie
+          uns, wie Ihre Station aussieht, und wir sagen Ihnen ehrlich, ob EC-Bell hilft.
+        </p>
+      </div>
+      <div class="button-row">
+        <a class="button button--light" href="mailto:{{ site.email }}?subject=PATON%20—%20unsere%20Station">
+          {{ site.email }}
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
